@@ -1,0 +1,20 @@
+cache/
+out/
+artifacts/
+typechain/
+node_modules/
+
+*.log
+*.vim
+
+.env
+.env.*
+!.env.example
+
+.vscode/
+
+flattened.txt
+
+# Ignore deps folders mounted in the root dir to stop solc from
+# complaining while we wait for it to support remaps/import paths
+@*
