@@ -38,6 +38,22 @@ lint :; prettier --write src/**/*.sol && prettier --write src/*.sol
 .PHONY: snapshot
 snapshot :; forge clean && forge snapshot --optimize --optimize-runs 666
 
+.PHONY: deploy
+deploy:; forge create ./src/KNSDeployer.sol:KNSDeployer -i \
+	--rpc-url ${MAINNET_RPC_URL} \
+	--private-key ${MAINNET_PRIVATE_KEY}
+
+.PHONY: deploy-testnet
+deploy-testnet:; forge create ./src/KNSDeployer.sol:KNSDeployer -i \
+	--legacy \
+	--rpc-url ${TESTNET_RPC_URL} \
+	--private-key ${TESTNET_PRIVATE_KEY}
+
+.PHONY: deploy-local
+deploy-local:; forge create ./src/KNSDeployer.sol:KNSDeployer -i \
+	--rpc-url "http://localhost:8545" \
+	--private-key ${LOCALHOST_PRIVATE_KEY}
+
 # Mount deps to remaps folders in the root of the project to stop solc
 # from complaining while we wait for it to support remaps/include paths
 .PHONY: mount-deps

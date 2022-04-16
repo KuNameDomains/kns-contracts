@@ -5,6 +5,7 @@
     "license": "AGPL-3.0-only",
     "version": "0.0.1",
     "files": [
+        "deployments/",
         "src/**/*.sol",
         "typechain/"
     ],
@@ -15,17 +16,15 @@
     "devDependencies": {
         "@ensdomains/buffer": "^0.1.0",
         "@ensdomains/ens-contracts": "git+https://github.com/ensdomains/ens-contracts.git#3c91d41d87430bb869eb7bc886789dc27be1fa04",
-        "@ethersproject/abi": "^5.6.1",
-        "@ethersproject/bytes": "^5.6.1",
-        "@ethersproject/providers": "^5.6.3",
-        "@nomiclabs/hardhat-ethers": "^2.0.5",
+        "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers@^0.3.0-beta.13",
         "@openzeppelin/contracts": "^4.5.0",
         "@rari-capital/solmate": "^6.2.0",
         "@typechain/ethers-v5": "^10.0.0",
         "@typechain/hardhat": "^6.0.0",
         "@types/node": "^17.0.23",
-        "ethers": "^5.6.3",
+        "dotenv": "^16.0.0",
         "hardhat": "^2.9.3",
+        "hardhat-deploy": "^0.11.4",
         "prettier": "^2.3.1",
         "prettier-plugin-solidity": "^1.0.0-beta.13",
         "ts-node": "^10.7.0",
@@ -33,7 +32,9 @@
         "typescript": "^4.6.3"
     },
     "scripts": {
-        "prepare": "npx hardhat typechain",
+        "prepare":"npm run typechain && npm run export",
+        "typechain": "npx hardhat typechain",
+        "export": "npx hardhat export --export-all deployments/contracts.json",
         "setup": "make clean && make build",
         "sync": "make update",
         "test": "make test",

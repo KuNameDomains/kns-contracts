@@ -13,7 +13,7 @@ contract KNSDeployerTest is DSTestPlusPlus {
     }
 
     function testOwnership() public {
-        KNSRegistry registry = deployer.kns();
+        KNSRegistry registry = deployer.registry();
         bytes32 tldNode = keccak256(abi.encodePacked(bytes32(0), deployer.TLD_LABEL()));
 
         assertEq(registry.owner(bytes32(0)), address(this));

@@ -4,6 +4,10 @@ artifacts/
 typechain/
 node_modules/
 
+deployments/localhost
+deployments/hardhat
+deployments/contracts.json
+
 *.log
 *.vim
 

@@ -2,7 +2,6 @@
 pragma solidity >=0.8.13;
 
 import { KNSRegistry } from "./KNSRegistry.sol";
-import "@ensdomains/ens-contracts/contracts/registry/ENS.sol";
 
 /// @title KNS Registrar
 /// @author Gilgames <gilgames@kuname.domains>
