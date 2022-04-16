@@ -38,7 +38,7 @@ contract KNSRegistry is ERC721, ERC721Enumerable {
     /**
      * @dev Constructs a new KNS registry.
      */
-    constructor() ERC721("KCC Name Service", "KNS") {
+    constructor() ERC721("KCC Name Service Domains", "KNSD") {
         _mint(_msgSender(), uint256(0x0));
     }
 
