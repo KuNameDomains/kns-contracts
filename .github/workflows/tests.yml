@@ -13,9 +13,9 @@ jobs:
         uses: onbjerg/foundry-toolchain@v1
         with:
           version: nightly
-      - name: Install Dependencies
+      - name: Install NPM Dependencies
         run: yarn
-      - name: Update Modules
+      - name: Install Foundry Modules
         run: yarn sync
       - name: Run Tests
         run: FOUNDRY_PROFILE=ci yarn test
