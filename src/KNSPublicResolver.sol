@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 pragma solidity >=0.8.13;
 
-import { KNSRegistry } from "./KNSRegistry.sol";
+import { NameRegistry } from "./interfaces/NameRegistry.sol";
 import "@ensdomains/ens-contracts/contracts/resolvers/profiles/ABIResolver.sol";
 import "@ensdomains/ens-contracts/contracts/resolvers/profiles/AddrResolver.sol";
 import "@ensdomains/ens-contracts/contracts/resolvers/profiles/ContentHashResolver.sol";
@@ -29,7 +29,7 @@ contract KNSPublicResolver is
     PubkeyResolver,
     TextResolver
 {
-    KNSRegistry immutable kns;
+    NameRegistry immutable registry;
 
     /**
      * A mapping of operators. An address that is authorised for an address
@@ -41,8 +41,8 @@ contract KNSPublicResolver is
 
     event ApprovalForAll(address indexed owner, address indexed operator, bool approved);
 
-    constructor(KNSRegistry _kns) {
-        kns = _kns;
+    constructor(NameRegistry _registry) {
+        registry = _registry;
     }
 
     function setApprovalForAll(address operator, bool approved) external {
@@ -57,7 +57,7 @@ contract KNSPublicResolver is
     }
 
     function isAuthorised(bytes32 node) internal view override returns (bool) {
-        address owner = kns.owner(node);
+        address owner = registry.owner(node);
         return owner == msg.sender || isApprovedForAll(owner, msg.sender);
     }
 

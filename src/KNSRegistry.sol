@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 pragma solidity >=0.8.13;
 
+import { NameRegistry } from "./interfaces/NameRegistry.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 
@@ -10,16 +11,7 @@ error Unauthorized();
 /// @author Gilgames <gilgames@kuname.domains>
 /// @notice This contract is inspired by the ENS registry, but it is designed
 ///         be compatible with the ERC721 standard out-of-the-box.
-contract KNSRegistry is ERC721, ERC721Enumerable {
-    // Logged when the owner of a node assigns a new owner to a subnode.
-    event NewOwner(bytes32 indexed node, bytes32 indexed label, address owner);
-
-    // Logged when the resolver for a node changes.
-    event NewResolver(bytes32 indexed node, address resolver);
-
-    // Logged when the TTL of a node changes
-    event NewTTL(bytes32 indexed node, uint64 ttl);
-
+contract KNSRegistry is NameRegistry, ERC721, ERC721Enumerable {
     struct Record {
         address resolver;
         uint64 ttl;
@@ -212,7 +204,12 @@ contract KNSRegistry is ERC721, ERC721Enumerable {
         super._beforeTokenTransfer(from, to, tokenId);
     }
 
-    function supportsInterface(bytes4 interfaceId) public view override(ERC721, ERC721Enumerable) returns (bool) {
+    function supportsInterface(bytes4 interfaceId)
+        public
+        view
+        override(IERC165, ERC721, ERC721Enumerable)
+        returns (bool)
+    {
         return super.supportsInterface(interfaceId);
     }
 }

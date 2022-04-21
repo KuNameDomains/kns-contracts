@@ -2,14 +2,10 @@
 pragma solidity >=0.8.13;
 
 import { KNSRegistry } from "./KNSRegistry.sol";
-import "@ensdomains/ens-contracts/contracts/registry/ENS.sol";
 import "@ensdomains/ens-contracts/contracts/registry/IReverseRegistrar.sol";
+import "@ensdomains/ens-contracts/contracts/resolvers/profiles/NameResolver.sol";
 import "@ensdomains/ens-contracts/contracts/root/Controllable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-
-abstract contract NameResolver {
-    function setName(bytes32 node, string memory name) public virtual;
-}
 
 bytes32 constant lookup = 0x3031323334353637383961626364656600000000000000000000000000000000;
 
