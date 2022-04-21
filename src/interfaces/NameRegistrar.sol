@@ -28,7 +28,7 @@ interface NameRegistrar {
     function removeController(address controller) external;
 
     /**
-     * @dev Set the resolver for the domain that this registrar manages.
+     * @dev Sets the resolver for the domain that this registrar manages.
      */
     function setResolver(address resolver) external;
 
@@ -38,7 +38,7 @@ interface NameRegistrar {
     function available(string calldata name) external view returns (bool);
 
     /**
-     * @dev Register a name.
+     * @dev Registers a name.
      */
     function register(string calldata name, address owner) external returns (bytes32 hashedName);
 }
