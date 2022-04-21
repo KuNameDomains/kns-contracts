@@ -3,10 +3,9 @@ pragma solidity >=0.8.13;
 
 import { KNSRegistrar } from "./KNSRegistrar.sol";
 import { KNSRegistry } from "./KNSRegistry.sol";
-import { KNSPublicResolver } from "./KNSPublicResolver.sol";
-import { NameResolver, KNSReverseRegistrar } from "./KNSReverseRegistrar.sol";
-import { OnChainNamehashDB } from "./OnChainNamehashDB.sol";
-import { NamehashDB } from "./NamehashDB.sol";
+import { KNSPublicResolver, NameResolver } from "./KNSPublicResolver.sol";
+import { KNSReverseRegistrar } from "./KNSReverseRegistrar.sol";
+import { OnChainNamehashDB, NamehashDB } from "./OnChainNamehashDB.sol";
 
 /// @title KNS Deployer
 /// @author Gilgames <gilgames@kuname.domains>
@@ -36,7 +35,8 @@ contract KNSDeployer {
         registry.setResolver(resolverNode, address(publicResolver));
         publicResolver.setAddr(resolverNode, address(publicResolver));
 
-        registrar = new KNSRegistrar(registry, namehash(bytes32(0), TLD_LABEL));
+        namehashDB = new OnChainNamehashDB();
+        registrar = new KNSRegistrar(registry, namehashDB, namehash(bytes32(0), TLD_LABEL));
         registry.setSubnodeOwner(bytes32(0), TLD_LABEL, address(registrar));
 
         reverseRegistrar = new KNSReverseRegistrar(registry, NameResolver(address(publicResolver)));
@@ -48,7 +48,6 @@ contract KNSDeployer {
         registry.setSubnodeOwner(bytes32(0), REVERSE_REGISTRAR_LABEL, msg.sender);
         registry.setOwner(bytes32(0), msg.sender);
 
-        namehashDB = new OnChainNamehashDB();
         namehashDB.store(bytes32(0), "kcc");
         namehashDB.store(bytes32(0), "resolver");
         namehashDB.store(bytes32(0), "reverse");

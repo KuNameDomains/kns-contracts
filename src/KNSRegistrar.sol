@@ -1,36 +1,82 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 pragma solidity >=0.8.13;
 
-import { KNSRegistry } from "./KNSRegistry.sol";
+import { NameRegistry } from "./interfaces/NameRegistry.sol";
+import { NameRegistrar } from "./interfaces/NameRegistrar.sol";
+import { NamehashDB } from "./interfaces/NamehashDB.sol";
+import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
+
+error RegistrarNotLive();
+error Unauthorized();
+error UnavailableName();
 
 /// @title KNS Registrar
 /// @author Gilgames <gilgames@kuname.domains>
-contract KNSRegistrar {
-    KNSRegistry registry;
-    bytes32 rootNode;
+contract KNSRegistrar is NameRegistrar, Ownable {
+    NameRegistry public registry;
+    NamehashDB public namehashDB;
+    bytes32 public rootNode;
+    mapping(address => bool) public controllers;
 
-    modifier only_owner(bytes32 label) {
-        address currentOwner = registry.owner(keccak256(abi.encodePacked(rootNode, label)));
-        require(currentOwner == address(0x0) || currentOwner == msg.sender);
+    constructor(
+        NameRegistry _registry,
+        NamehashDB _namehashDB,
+        bytes32 _rootNode
+    ) {
+        registry = _registry;
+        namehashDB = _namehashDB;
+        rootNode = _rootNode;
+    }
+
+    modifier onlyWhenLive() {
+        if (registry.owner(rootNode) != address(this)) {
+            revert RegistrarNotLive();
+        }
         _;
     }
 
-    /**
-     * Constructor.
-     * @param _registry The address of the KNS registry.
-     * @param node The node that this registrar administers.
-     */
-    constructor(KNSRegistry _registry, bytes32 node) {
-        registry = _registry;
-        rootNode = node;
+    modifier onlyController() {
+        if (!controllers[msg.sender]) {
+            revert Unauthorized();
+        }
+        _;
     }
 
-    /**
-     * Register a name, or change the owner of an existing registration.
-     * @param label The hash of the label to register.
-     * @param owner The address of the new owner.
-     */
-    function register(bytes32 label, address owner) public only_owner(label) {
-        registry.setSubnodeOwner(rootNode, label, owner);
+    function addController(address controller) external override onlyOwner {
+        controllers[controller] = true;
+        emit ControllerAdded(controller);
+    }
+
+    function removeController(address controller) external override onlyOwner {
+        controllers[controller] = false;
+        emit ControllerRemoved(controller);
+    }
+
+    function setResolver(address resolver) external override onlyOwner {
+        registry.setResolver(rootNode, resolver);
+    }
+
+    function setNamehashDB(NamehashDB _namehashDB) external onlyOwner {
+        namehashDB = _namehashDB;
+    }
+
+    function available(string calldata name) public view override returns (bool) {
+        bytes32 node = keccak256(abi.encodePacked(rootNode, keccak256(abi.encodePacked(name))));
+        return !registry.recordExists(node);
+    }
+
+    function register(string calldata name, address owner) public onlyWhenLive onlyController returns (bytes32) {
+        if (!available(name)) {
+            revert UnavailableName();
+        }
+
+        bytes32 hashedName = keccak256(abi.encodePacked(name));
+        registry.setSubnodeOwner(rootNode, hashedName, owner);
+
+        namehashDB.store(rootNode, name);
+
+        emit NameRegistered(hashedName, owner);
+
+        return hashedName;
     }
 }
