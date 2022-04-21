@@ -48,6 +48,9 @@ contract KNSDeployer {
         registry.setSubnodeOwner(bytes32(0), REVERSE_REGISTRAR_LABEL, msg.sender);
         registry.setOwner(bytes32(0), msg.sender);
 
+        registrar.transferOwnership(msg.sender);
+        reverseRegistrar.transferOwnership(msg.sender);
+
         namehashDB.store(bytes32(0), "kcc");
         namehashDB.store(bytes32(0), "resolver");
         namehashDB.store(bytes32(0), "reverse");
