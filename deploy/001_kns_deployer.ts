@@ -5,8 +5,6 @@ const func: DeployFunction = async function(hre: HardhatRuntimeEnvironment) {
     const deployers = await hre.getUnnamedAccounts();
     const { deploy } = hre.deployments;
 
-    // proxy only in non-live network (localhost and hardhat network) enabling HCR (Hot Contract Replacement)
-    // in live network, proxy is disabled and constructor is invoked
     await deploy('KNSDeployer', {
         from: deployers[0],
         log: true,
@@ -46,6 +44,13 @@ const func: DeployFunction = async function(hre: HardhatRuntimeEnvironment) {
     hre.deployments.save(namehashDB.contractName, {
         abi: namehashDB.abi,
         address: namehashDBAddress,
+    } as DeploymentSubmission);
+
+    const fifoRegistrarControllerAddress = await hre.deployments.read('KNSDeployer', 'fifoRegistrarController');
+    const fifoRegistrarController = await hre.deployments.getArtifact('FIFORegistrarController');
+    hre.deployments.save(fifoRegistrarController.contractName, {
+        abi: fifoRegistrarController.abi,
+        address: fifoRegistrarControllerAddress,
     } as DeploymentSubmission);
 
     return hre.network.live; // when live network, record the script as executed to prevent rexecution

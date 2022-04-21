@@ -6,6 +6,7 @@ import { KNSRegistry } from "./KNSRegistry.sol";
 import { KNSPublicResolver, NameResolver } from "./KNSPublicResolver.sol";
 import { KNSReverseRegistrar } from "./KNSReverseRegistrar.sol";
 import { OnChainNamehashDB, NamehashDB } from "./OnChainNamehashDB.sol";
+import { FIFORegistrarController } from "./FIFORegistrarController.sol";
 
 /// @title KNS Deployer
 /// @author Gilgames <gilgames@kuname.domains>
@@ -20,6 +21,7 @@ contract KNSDeployer {
     KNSReverseRegistrar public reverseRegistrar;
     KNSPublicResolver public publicResolver;
     NamehashDB public namehashDB;
+    FIFORegistrarController public fifoRegistrarController;
 
     function namehash(bytes32 node, bytes32 label) public pure returns (bytes32) {
         return keccak256(abi.encodePacked(node, label));
@@ -40,6 +42,9 @@ contract KNSDeployer {
         registry.setSubnodeOwner(bytes32(0), TLD_LABEL, address(registrar));
 
         reverseRegistrar = new KNSReverseRegistrar(registry, NameResolver(address(publicResolver)));
+
+        fifoRegistrarController = new FIFORegistrarController(registrar);
+        registrar.addController(address(fifoRegistrarController));
 
         registry.setSubnodeOwner(bytes32(0), REVERSE_REGISTRAR_LABEL, address(this));
         registry.setSubnodeOwner(namehash(bytes32(0), REVERSE_REGISTRAR_LABEL), ADDR_LABEL, address(reverseRegistrar));
