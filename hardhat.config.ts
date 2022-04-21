@@ -38,14 +38,14 @@ const config: HardhatUserConfig = {
         },
         testnet: {
             live: true,
-            url: process.env.TESTNET_RPC_URL,
-            accounts: [process.env.TESTNET_PRIVATE_KEY ?? ''],
+            url: process.env.TESTNET_RPC_URL ?? '',
+            accounts: process.env.TESTNET_PRIVATE_KEY ? [process.env.TESTNET_PRIVATE_KEY] : undefined,
             saveDeployments: true,
         },
         mainnet: {
             live: true,
-            url: process.env.MAINNET_RPC_URL,
-            accounts: [process.env.MAINNET_PRIVATE_KEY ?? ''],
+            url: process.env.MAINNET_RPC_URL ?? '',
+            accounts: process.env.MAINNET_PRIVATE_KEY ? [process.env.MAINNET_PRIVATE_KEY] : undefined,
             saveDeployments: true,
         },
     }

@@ -15,7 +15,7 @@
     },
     "devDependencies": {
         "@ensdomains/buffer": "^0.1.0",
-        "@ensdomains/ens-contracts": "git+https://github.com/ensdomains/ens-contracts.git#3c91d41d87430bb869eb7bc886789dc27be1fa04",
+        "@ensdomains/ens-contracts": "https://github.com/ensdomains/ens-contracts.git#3c91d41d87430bb869eb7bc886789dc27be1fa04",
         "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers@^0.3.0-beta.13",
         "@openzeppelin/contracts": "^4.5.0",
         "@rari-capital/solmate": "^6.2.0",

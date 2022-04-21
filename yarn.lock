@@ -28,10 +28,9 @@
   dependencies:
     "@nomiclabs/hardhat-truffle5" "^2.0.0"
 
-"@ensdomains/ens-contracts@git+https://github.com/ensdomains/ens-contracts.git#3c91d41d87430bb869eb7bc886789dc27be1fa04":
+"@ensdomains/ens-contracts@https://github.com/ensdomains/ens-contracts.git#3c91d41d87430bb869eb7bc886789dc27be1fa04":
   version "0.0.9"
-  resolved "git+ssh://git@github.com/ensdomains/ens-contracts.git#3c91d41d87430bb869eb7bc886789dc27be1fa04"
-  integrity sha512-aOouCtoLC4/CDXm8DELLnx5Nd0QWJ8YUpTVCvZtUTDauFaV9XsvGH+A+YKt/uofbcl7ZfFiYz1BiSJgCG/7AQg==
+  resolved "https://github.com/ensdomains/ens-contracts.git#3c91d41d87430bb869eb7bc886789dc27be1fa04"
   dependencies:
     "@ensdomains/buffer" "^0.0.13"
     "@ensdomains/solsha1" "0.0.3"
