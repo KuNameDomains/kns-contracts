@@ -15,21 +15,21 @@ error UnavailableName();
 contract KNSRegistrar is NameRegistrar, Ownable {
     NameRegistry public registry;
     NamehashDB public namehashDB;
-    bytes32 public rootNode;
+    bytes32 public tldNode;
     mapping(address => bool) public controllers;
 
     constructor(
         NameRegistry _registry,
         NamehashDB _namehashDB,
-        bytes32 _rootNode
+        bytes32 _tldNode
     ) {
         registry = _registry;
         namehashDB = _namehashDB;
-        rootNode = _rootNode;
+        tldNode = _tldNode;
     }
 
     modifier onlyWhenLive() {
-        if (registry.owner(rootNode) != address(this)) {
+        if (registry.owner(tldNode) != address(this)) {
             revert RegistrarNotLive();
         }
         _;
@@ -53,7 +53,7 @@ contract KNSRegistrar is NameRegistrar, Ownable {
     }
 
     function setResolver(address resolver) external override onlyOwner {
-        registry.setResolver(rootNode, resolver);
+        registry.setResolver(tldNode, resolver);
     }
 
     function setNamehashDB(NamehashDB _namehashDB) external onlyOwner {
@@ -61,7 +61,7 @@ contract KNSRegistrar is NameRegistrar, Ownable {
     }
 
     function available(string calldata name) public view override returns (bool) {
-        bytes32 node = keccak256(abi.encodePacked(rootNode, keccak256(abi.encodePacked(name))));
+        bytes32 node = keccak256(abi.encodePacked(tldNode, keccak256(abi.encodePacked(name))));
         return !registry.recordExists(node);
     }
 
@@ -71,9 +71,9 @@ contract KNSRegistrar is NameRegistrar, Ownable {
         }
 
         bytes32 hashedName = keccak256(abi.encodePacked(name));
-        registry.setSubnodeOwner(rootNode, hashedName, owner);
+        registry.setSubnodeOwner(tldNode, hashedName, owner);
 
-        namehashDB.store(rootNode, name);
+        namehashDB.store(tldNode, name);
 
         emit NameRegistered(hashedName, owner);
 
