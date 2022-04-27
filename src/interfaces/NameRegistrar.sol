@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 pragma solidity >=0.8.13;
 
+import { NameRegistry } from "./NameRegistry.sol";
+
 interface NameRegistrar {
     /**
      * @dev Emitted when a new controller is added.
@@ -16,6 +18,16 @@ interface NameRegistrar {
      * @dev Emitted upon name registration.
      */
     event NameRegistered(bytes32 indexed hashedName, address indexed owner);
+
+    /**
+     * @dev Adds a controller that can register names.
+     */
+    function registry() external view returns (NameRegistry);
+
+    /**
+     * @dev Adds a controller that can register names.
+     */
+    function tldNode() external view returns (bytes32);
 
     /**
      * @dev Adds a controller that can register names.

@@ -39,7 +39,9 @@ contract KNSDeployer {
 
         namehashDB = new OnChainNamehashDB();
         registrar = new KNSRegistrar(registry, namehashDB, namehash(bytes32(0), TLD_LABEL));
-        registry.setSubnodeOwner(bytes32(0), TLD_LABEL, address(registrar));
+        bytes32 tldNode = registry.setSubnodeOwner(bytes32(0), TLD_LABEL, address(this));
+        registry.setResolver(tldNode, address(publicResolver));
+        registry.setOwner(tldNode, address(registrar));
 
         reverseRegistrar = new KNSReverseRegistrar(registry, NameResolver(address(publicResolver)));
 
