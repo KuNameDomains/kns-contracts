@@ -34,6 +34,7 @@
     "scripts": {
         "prepare":"npm run typechain && npm run export",
         "typechain": "npx hardhat typechain",
+        "deploy": "npx hardhat deploy",
         "export": "npx hardhat export --export-all deployments/contracts.json",
         "setup": "make clean && make build",
         "sync": "make install",
