@@ -23,20 +23,20 @@ install :; forge install
 update:; forge update
 
 .PHONY: build
-build  :; forge clean && forge build --optimize --optimize-runs 666
+build  :; forge clean && forge build --optimize --optimizer-runs 666
 
 .PHONY: scripts
 scripts :; chmod +x ./scripts/*
 
 .PHONY: test
-test   :; forge clean && forge test --optimize --optimize-runs 666 -v # --ffi # enable if you need the `ffi` cheat code on HEVM
+test   :; forge clean && forge test --optimize --optimizer-runs 666 -v # --ffi # enable if you need the `ffi` cheat code on HEVM
 
 .PHONY: lint
 lint :; prettier --write src/**/*.sol && prettier --write src/*.sol
 
 # Generate Gas Snapshots
 .PHONY: snapshot
-snapshot :; forge clean && forge snapshot --optimize --optimize-runs 666
+snapshot :; forge clean && forge snapshot --optimize --optimizer-runs 666
 
 .PHONY: deploy
 deploy:; forge create ./src/KNSDeployer.sol:KNSDeployer -i \
