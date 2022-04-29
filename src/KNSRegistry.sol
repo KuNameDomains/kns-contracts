@@ -10,8 +10,8 @@ error Unauthorized();
 /// @title KNS Registry
 /// @author Gilgames <gilgames@kuname.domains>
 /// @notice This contract is inspired by the ENS registry, but it is designed
-///         be compatible with the ERC721 standard out-of-the-box.
-contract KNSRegistry is NameRegistry, ERC721, ERC721Enumerable {
+///         to be compatible with the ERC721 standard out-of-the-box.
+contract KNSRegistry is ERC721, NameRegistry, ERC721Enumerable {
     struct Record {
         address resolver;
         uint64 ttl;
