@@ -70,5 +70,11 @@ contract NameRegistryDummy is NameRegistry {
 
     function isApprovedForAll(address _owner, address operator) external view virtual override returns (bool) {}
 
+    function tokenOfOwnerByIndex(address _owner, uint256 index) external view returns (uint256) {}
+
+    function tokenByIndex(uint256 index) external view returns (uint256) {}
+
+    function totalSupply() external view returns (uint256) {}
+
     function supportsInterface(bytes4 interfaceId) external view virtual override returns (bool) {}
 }
