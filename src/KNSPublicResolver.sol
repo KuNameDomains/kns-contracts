@@ -11,6 +11,7 @@ import "@ensdomains/ens-contracts/contracts/resolvers/profiles/NameResolver.sol"
 import "@ensdomains/ens-contracts/contracts/resolvers/profiles/PubkeyResolver.sol";
 import "@ensdomains/ens-contracts/contracts/resolvers/profiles/TextResolver.sol";
 import "@ensdomains/ens-contracts/contracts/resolvers/Multicallable.sol";
+import "@ensdomains/ens-contracts/contracts/root/Controllable.sol";
 
 /// @title KNS Public Resolver
 /// @author Gilgames <gilgames@kuname.domains>
@@ -27,7 +28,8 @@ contract KNSPublicResolver is
     InterfaceResolver,
     NameResolver,
     PubkeyResolver,
-    TextResolver
+    TextResolver,
+    Controllable
 {
     NameRegistry immutable registry;
 
@@ -58,7 +60,7 @@ contract KNSPublicResolver is
 
     function isAuthorised(bytes32 node) internal view override returns (bool) {
         address owner = registry.owner(node);
-        return owner == msg.sender || isApprovedForAll(owner, msg.sender);
+        return owner == msg.sender || controllers[msg.sender] || isApprovedForAll(owner, msg.sender);
     }
 
     function supportsInterface(bytes4 interfaceID)
