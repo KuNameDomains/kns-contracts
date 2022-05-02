@@ -6,12 +6,13 @@ import { KNSDeployer } from "../src/KNSDeployer.sol";
 import { KNSRegistry } from "../src/KNSRegistry.sol";
 import { KNSRegistrar } from "../src/KNSRegistrar.sol";
 import { KNSReverseRegistrar } from "../src/KNSReverseRegistrar.sol";
+import { NamehashDB } from "../src/interfaces/NamehashDB.sol";
 
 contract KNSDeployerTest is DSTestPlusPlus {
     KNSDeployer deployer;
 
     function setUp() public {
-        deployer = new KNSDeployer();
+        deployer = new KNSDeployer(NamehashDB(address(1)));
     }
 
     function testOwnership() public {

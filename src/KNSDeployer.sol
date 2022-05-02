@@ -5,8 +5,8 @@ import { KNSRegistrar } from "./KNSRegistrar.sol";
 import { KNSRegistry } from "./KNSRegistry.sol";
 import { KNSPublicResolver, NameResolver } from "./KNSPublicResolver.sol";
 import { KNSReverseRegistrar } from "./KNSReverseRegistrar.sol";
-import { OnChainNamehashDB, NamehashDB } from "./OnChainNamehashDB.sol";
-import { FIFORegistrarController } from "./FIFORegistrarController.sol";
+import { NamehashDB } from "./interfaces/NamehashDB.sol";
+import { KNSRegistrarController } from "./KNSRegistrarController.sol";
 
 /// @title KNS Deployer
 /// @author Gilgames <gilgames@kuname.domains>
@@ -21,13 +21,14 @@ contract KNSDeployer {
     KNSReverseRegistrar public reverseRegistrar;
     KNSPublicResolver public publicResolver;
     NamehashDB public namehashDB;
-    FIFORegistrarController public fifoRegistrarController;
+    KNSRegistrarController public controller;
 
     function namehash(bytes32 node, bytes32 label) public pure returns (bytes32) {
         return keccak256(abi.encodePacked(node, label));
     }
 
-    constructor() {
+    constructor(NamehashDB _namehashDB) {
+        namehashDB = _namehashDB;
         registry = new KNSRegistry();
         publicResolver = new KNSPublicResolver(registry);
 
@@ -37,16 +38,18 @@ contract KNSDeployer {
         registry.setResolver(resolverNode, address(publicResolver));
         publicResolver.setAddr(resolverNode, address(publicResolver));
 
-        namehashDB = new OnChainNamehashDB();
         registrar = new KNSRegistrar(registry, namehashDB, namehash(bytes32(0), TLD_LABEL));
         bytes32 tldNode = registry.setSubnodeOwner(bytes32(0), TLD_LABEL, address(this));
         registry.setResolver(tldNode, address(publicResolver));
         registry.setOwner(tldNode, address(registrar));
 
         reverseRegistrar = new KNSReverseRegistrar(registry, NameResolver(address(publicResolver)));
+        publicResolver.setController(address(reverseRegistrar), true);
 
-        fifoRegistrarController = new FIFORegistrarController(registrar);
-        registrar.addController(address(fifoRegistrarController));
+        controller = new KNSRegistrarController(registrar, reverseRegistrar);
+        registrar.addController(address(controller));
+        reverseRegistrar.setController(address(controller), true);
+        publicResolver.setController(address(controller), true);
 
         registry.setSubnodeOwner(bytes32(0), REVERSE_REGISTRAR_LABEL, address(this));
         registry.setSubnodeOwner(namehash(bytes32(0), REVERSE_REGISTRAR_LABEL), ADDR_LABEL, address(reverseRegistrar));
@@ -57,10 +60,5 @@ contract KNSDeployer {
 
         registrar.transferOwnership(msg.sender);
         reverseRegistrar.transferOwnership(msg.sender);
-
-        namehashDB.store(bytes32(0), "kcc");
-        namehashDB.store(bytes32(0), "resolver");
-        namehashDB.store(bytes32(0), "reverse");
-        namehashDB.store(namehash(bytes32(0), "reverse"), "addr");
     }
 }

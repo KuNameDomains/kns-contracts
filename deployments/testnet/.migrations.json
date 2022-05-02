@@ -1,3 +1,5 @@
 {
-  "deploy_kns_deployer": 1650579035
+  "deploy_namehashdb_deployer": 1651526238,
+  "deploy_kns_deployer": 1651526310,
+  "deploy_kns_multifetcher": 1651526322
 }

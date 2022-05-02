@@ -1,11 +1,16 @@
 {
-  "address": "0x109b03b0470875310D2685822b95E108fB839D85",
+  "address": "0x2C4688934b8e683ec04597768E24047080Edd504",
   "abi": [
     {
       "inputs": [
         {
           "internalType": "contract NameRegistrar",
           "name": "_registrar",
+          "type": "address"
+        },
+        {
+          "internalType": "contract IReverseRegistrar",
+          "name": "_reverseRegistrar",
           "type": "address"
         }
       ],
@@ -16,6 +21,31 @@
       "inputs": [],
       "name": "UnavailableName",
       "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "label",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "NameRegistered",
+      "type": "event"
     },
     {
       "inputs": [
@@ -47,6 +77,21 @@
           "internalType": "address",
           "name": "owner",
           "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "resolver",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "addr",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "reverseRecord",
+          "type": "bool"
         }
       ],
       "name": "register",
@@ -60,6 +105,19 @@
       "outputs": [
         {
           "internalType": "contract NameRegistrar",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "reverseRegistrar",
+      "outputs": [
+        {
+          "internalType": "contract IReverseRegistrar",
           "name": "",
           "type": "address"
         }

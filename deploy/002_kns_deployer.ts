@@ -5,8 +5,11 @@ const func: DeployFunction = async function(hre: HardhatRuntimeEnvironment) {
     const deployers = await hre.getUnnamedAccounts();
     const { deploy } = hre.deployments;
 
+    const namehashDBAddress = await hre.deployments.read('NamehashDBDeployer', 'namehashDB');
+
     await deploy('KNSDeployer', {
         from: deployers[0],
+        args: [namehashDBAddress],
         log: true,
         autoMine: true, // speed up deployment on local network (ganache, hardhat), no effect on live networks
     });
@@ -39,18 +42,11 @@ const func: DeployFunction = async function(hre: HardhatRuntimeEnvironment) {
         address: knsReverseRegistrarAddress,
     } as DeploymentSubmission);
 
-    const namehashDBAddress = await hre.deployments.read('KNSDeployer', 'namehashDB');
-    const namehashDB = await hre.deployments.getArtifact('NamehashDB');
-    hre.deployments.save(namehashDB.contractName, {
-        abi: namehashDB.abi,
-        address: namehashDBAddress,
-    } as DeploymentSubmission);
-
-    const fifoRegistrarControllerAddress = await hre.deployments.read('KNSDeployer', 'fifoRegistrarController');
-    const fifoRegistrarController = await hre.deployments.getArtifact('FIFORegistrarController');
-    hre.deployments.save(fifoRegistrarController.contractName, {
-        abi: fifoRegistrarController.abi,
-        address: fifoRegistrarControllerAddress,
+    const knsRegistrarControllerAddress = await hre.deployments.read('KNSDeployer', 'controller');
+    const knsRegistrarController = await hre.deployments.getArtifact('KNSRegistrarController');
+    hre.deployments.save(knsRegistrarController.contractName, {
+        abi: knsRegistrarController.abi,
+        address: knsRegistrarControllerAddress,
     } as DeploymentSubmission);
 
     return hre.network.live; // when live network, record the script as executed to prevent rexecution

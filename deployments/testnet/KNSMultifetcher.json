@@ -1,0 +1,316 @@
+{
+  "address": "0x1c4a5e283EAC028fB96cdaF962653933B25FEdA1",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "contract NameRegistry",
+          "name": "_registry",
+          "type": "address"
+        },
+        {
+          "internalType": "contract NamehashDB",
+          "name": "_namehashDB",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_node",
+          "type": "bytes32"
+        }
+      ],
+      "name": "canonicalRecordsOfNode",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "address",
+              "name": "addr",
+              "type": "address"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "string",
+                  "name": "key",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "value",
+                  "type": "string"
+                }
+              ],
+              "internalType": "struct KNSMultifetcher.TextRecord[]",
+              "name": "textRecords",
+              "type": "tuple[]"
+            }
+          ],
+          "internalType": "struct KNSMultifetcher.DefaultRecords",
+          "name": "canonicalRecords",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "defaultTextRecordsKeys",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_node",
+          "type": "bytes32"
+        }
+      ],
+      "name": "metadataOfNode",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "resolver",
+              "type": "address"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "string",
+                  "name": "name",
+                  "type": "string"
+                },
+                {
+                  "internalType": "address",
+                  "name": "addr",
+                  "type": "address"
+                },
+                {
+                  "components": [
+                    {
+                      "internalType": "string",
+                      "name": "key",
+                      "type": "string"
+                    },
+                    {
+                      "internalType": "string",
+                      "name": "value",
+                      "type": "string"
+                    }
+                  ],
+                  "internalType": "struct KNSMultifetcher.TextRecord[]",
+                  "name": "textRecords",
+                  "type": "tuple[]"
+                }
+              ],
+              "internalType": "struct KNSMultifetcher.DefaultRecords",
+              "name": "canonicalRecords",
+              "type": "tuple"
+            }
+          ],
+          "internalType": "struct KNSMultifetcher.NodeMetadata",
+          "name": "metadata",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "namehashDB",
+      "outputs": [
+        {
+          "internalType": "contract NamehashDB",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        }
+      ],
+      "name": "namesOfOwner",
+      "outputs": [
+        {
+          "internalType": "string[]",
+          "name": "names",
+          "type": "string[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        }
+      ],
+      "name": "nodesOfOwner",
+      "outputs": [
+        {
+          "internalType": "bytes32[]",
+          "name": "nodes",
+          "type": "bytes32[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "registry",
+      "outputs": [
+        {
+          "internalType": "contract NameRegistry",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_node",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "string[]",
+          "name": "_keys",
+          "type": "string[]"
+        }
+      ],
+      "name": "textRecordsOfNode",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "key",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "value",
+              "type": "string"
+            }
+          ],
+          "internalType": "struct KNSMultifetcher.TextRecord[]",
+          "name": "textRecords",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x73091267b76a045b734d34c991fc088b4d468966e5aafdb8d300ab74b8c9b585",
+  "receipt": {
+    "to": null,
+    "from": "0x69f7324c36F383451fB85f202d0dFbEe00aF0072",
+    "contractAddress": "0x1c4a5e283EAC028fB96cdaF962653933B25FEdA1",
+    "transactionIndex": 0,
+    "gasUsed": "1487621",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x138b046264331101810676667d7d5ee052f30d59ef723d6047b58dabad5bf545",
+    "transactionHash": "0x73091267b76a045b734d34c991fc088b4d468966e5aafdb8d300ab74b8c9b585",
+    "logs": [],
+    "blockNumber": 10874490,
+    "cumulativeGasUsed": "1487621",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0xad010d79F68133B717aab79Dac99b558AC800eB7",
+    "0xeE4C4DBd0f12f42A5688f27871dd493739A85612"
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "320d301f50f1429d649e22e3e22ef34a",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.13+commit.abaa5c0e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract NameRegistry\",\"name\":\"_registry\",\"type\":\"address\"},{\"internalType\":\"contract NamehashDB\",\"name\":\"_namehashDB\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_node\",\"type\":\"bytes32\"}],\"name\":\"canonicalRecordsOfNode\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"key\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"value\",\"type\":\"string\"}],\"internalType\":\"struct KNSMultifetcher.TextRecord[]\",\"name\":\"textRecords\",\"type\":\"tuple[]\"}],\"internalType\":\"struct KNSMultifetcher.DefaultRecords\",\"name\":\"canonicalRecords\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"defaultTextRecordsKeys\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_node\",\"type\":\"bytes32\"}],\"name\":\"metadataOfNode\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"resolver\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"key\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"value\",\"type\":\"string\"}],\"internalType\":\"struct KNSMultifetcher.TextRecord[]\",\"name\":\"textRecords\",\"type\":\"tuple[]\"}],\"internalType\":\"struct KNSMultifetcher.DefaultRecords\",\"name\":\"canonicalRecords\",\"type\":\"tuple\"}],\"internalType\":\"struct KNSMultifetcher.NodeMetadata\",\"name\":\"metadata\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"namehashDB\",\"outputs\":[{\"internalType\":\"contract NamehashDB\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"}],\"name\":\"namesOfOwner\",\"outputs\":[{\"internalType\":\"string[]\",\"name\":\"names\",\"type\":\"string[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"}],\"name\":\"nodesOfOwner\",\"outputs\":[{\"internalType\":\"bytes32[]\",\"name\":\"nodes\",\"type\":\"bytes32[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"registry\",\"outputs\":[{\"internalType\":\"contract NameRegistry\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_node\",\"type\":\"bytes32\"},{\"internalType\":\"string[]\",\"name\":\"_keys\",\"type\":\"string[]\"}],\"name\":\"textRecordsOfNode\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"key\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"value\",\"type\":\"string\"}],\"internalType\":\"struct KNSMultifetcher.TextRecord[]\",\"name\":\"textRecords\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Gilgames <gilgames@kuname.domains>\",\"kind\":\"dev\",\"methods\":{},\"title\":\"KNS Multifetcher\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"This contract implements utility functions used to fetch multiple         records, names, and aggregate information in a single RPC call.\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"src/KNSMultifetcher.sol\":\"KNSMultifetcher\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":666},\"remappings\":[]},\"sources\":{\"@ensdomains/ens-contracts/contracts/resolvers/ISupportsInterface.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.4;\\n\\ninterface ISupportsInterface {\\n    function supportsInterface(bytes4 interfaceID) external pure returns(bool);\\n}\",\"keccak256\":\"0x4960422af4a3d38a2c440c656104465cba7dea0231cb7ae4a489a85dd65f645f\",\"license\":\"MIT\"},\"@ensdomains/ens-contracts/contracts/resolvers/ResolverBase.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity >=0.8.4;\\n\\nimport \\\"./SupportsInterface.sol\\\";\\n\\nabstract contract ResolverBase is SupportsInterface {\\n    function isAuthorised(bytes32 node) internal virtual view returns(bool);\\n\\n    modifier authorised(bytes32 node) {\\n        require(isAuthorised(node));\\n        _;\\n    }\\n}\\n\",\"keccak256\":\"0xee4e3e99b515bdb2fc231c81fc6ff35cf09c3b57e9aaef538bfbb32f7c59248c\",\"license\":\"MIT\"},\"@ensdomains/ens-contracts/contracts/resolvers/SupportsInterface.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.4;\\n\\nimport \\\"./ISupportsInterface.sol\\\";\\n\\nabstract contract SupportsInterface is ISupportsInterface {\\n    function supportsInterface(bytes4 interfaceID) virtual override public pure returns(bool) {\\n        return interfaceID == type(ISupportsInterface).interfaceId;\\n    }\\n}\\n\",\"keccak256\":\"0xcd27206ee8f8bd520d5441294f6438dde98f6933eb8801ee59a0155b8a8cde1b\",\"license\":\"MIT\"},\"@ensdomains/ens-contracts/contracts/resolvers/profiles/AddrResolver.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity >=0.8.4;\\n\\nimport \\\"../ResolverBase.sol\\\";\\nimport \\\"./IAddrResolver.sol\\\";\\nimport \\\"./IAddressResolver.sol\\\";\\n\\nabstract contract AddrResolver is IAddrResolver, IAddressResolver, ResolverBase {\\n    uint constant private COIN_TYPE_ETH = 60;\\n\\n    mapping(bytes32=>mapping(uint=>bytes)) _addresses;\\n\\n    /**\\n     * Sets the address associated with an ENS node.\\n     * May only be called by the owner of that node in the ENS registry.\\n     * @param node The node to update.\\n     * @param a The address to set.\\n     */\\n    function setAddr(bytes32 node, address a) virtual external authorised(node) {\\n        setAddr(node, COIN_TYPE_ETH, addressToBytes(a));\\n    }\\n\\n    /**\\n     * Returns the address associated with an ENS node.\\n     * @param node The ENS node to query.\\n     * @return The associated address.\\n     */\\n    function addr(bytes32 node) virtual override public view returns (address payable) {\\n        bytes memory a = addr(node, COIN_TYPE_ETH);\\n        if(a.length == 0) {\\n            return payable(0);\\n        }\\n        return bytesToAddress(a);\\n    }\\n\\n    function setAddr(bytes32 node, uint coinType, bytes memory a) virtual public authorised(node) {\\n        emit AddressChanged(node, coinType, a);\\n        if(coinType == COIN_TYPE_ETH) {\\n            emit AddrChanged(node, bytesToAddress(a));\\n        }\\n        _addresses[node][coinType] = a;\\n    }\\n\\n    function addr(bytes32 node, uint coinType) virtual override public view returns(bytes memory) {\\n        return _addresses[node][coinType];\\n    }\\n\\n    function supportsInterface(bytes4 interfaceID) virtual override public pure returns(bool) {\\n        return interfaceID == type(IAddrResolver).interfaceId || interfaceID == type(IAddressResolver).interfaceId || super.supportsInterface(interfaceID);\\n    }\\n\\n    function bytesToAddress(bytes memory b) internal pure returns(address payable a) {\\n        require(b.length == 20);\\n        assembly {\\n            a := div(mload(add(b, 32)), exp(256, 12))\\n        }\\n    }\\n\\n    function addressToBytes(address a) internal pure returns(bytes memory b) {\\n        b = new bytes(20);\\n        assembly {\\n            mstore(add(b, 32), mul(a, exp(256, 12)))\\n        }\\n    }\\n}\\n\",\"keccak256\":\"0x356ed43442c7598b7489e1d1fef89f7b226e53c55e5cd319274b1fb7b7a81355\",\"license\":\"MIT\"},\"@ensdomains/ens-contracts/contracts/resolvers/profiles/IAddrResolver.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity >=0.8.4;\\n\\n/**\\n * Interface for the legacy (ETH-only) addr function.\\n */\\ninterface IAddrResolver {\\n    event AddrChanged(bytes32 indexed node, address a);\\n\\n    /**\\n     * Returns the address associated with an ENS node.\\n     * @param node The ENS node to query.\\n     * @return The associated address.\\n     */\\n    function addr(bytes32 node) external view returns (address payable);\\n}\\n\",\"keccak256\":\"0x2ad7f2fc60ebe0f93745fe70247f6a854f66af732483fda2a3c5e055614445e8\",\"license\":\"MIT\"},\"@ensdomains/ens-contracts/contracts/resolvers/profiles/IAddressResolver.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity >=0.8.4;\\n\\n/**\\n * Interface for the new (multicoin) addr function.\\n */\\ninterface IAddressResolver {\\n    event AddressChanged(bytes32 indexed node, uint coinType, bytes newAddress);\\n\\n    function addr(bytes32 node, uint coinType) external view returns(bytes memory);\\n}\\n\",\"keccak256\":\"0x20717682fa28eb1755a3b6ade738c8e0239c1cc393579058d4c3ffaca238c04b\",\"license\":\"MIT\"},\"@ensdomains/ens-contracts/contracts/resolvers/profiles/INameResolver.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity >=0.8.4;\\n\\ninterface INameResolver {\\n    event NameChanged(bytes32 indexed node, string name);\\n\\n    /**\\n     * Returns the name associated with an ENS node, for reverse records.\\n     * Defined in EIP181.\\n     * @param node The ENS node to query.\\n     * @return The associated name.\\n     */\\n    function name(bytes32 node) external view returns (string memory);\\n}\\n\",\"keccak256\":\"0x9ec392b612447b1acbdc01114f2da2837a658d3f3157f60a99c5269f0b623346\",\"license\":\"MIT\"},\"@ensdomains/ens-contracts/contracts/resolvers/profiles/ITextResolver.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity >=0.8.4;\\n\\ninterface ITextResolver {\\n    event TextChanged(bytes32 indexed node, string indexed indexedKey, string key);\\n\\n    /**\\n     * Returns the text data associated with an ENS node and key.\\n     * @param node The ENS node to query.\\n     * @param key The text data key to query.\\n     * @return The associated text data.\\n     */\\n    function text(bytes32 node, string calldata key) external view returns (string memory);\\n}\\n\",\"keccak256\":\"0x36a6602f2d76f373c5e1dcded0c87e1d3ab5180dbbbea7aa2a8d0e9a36273e38\",\"license\":\"MIT\"},\"@ensdomains/ens-contracts/contracts/resolvers/profiles/NameResolver.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity >=0.8.4;\\n\\nimport \\\"../ResolverBase.sol\\\";\\nimport \\\"./INameResolver.sol\\\";\\n\\nabstract contract NameResolver is INameResolver, ResolverBase {\\n    mapping(bytes32=>string) names;\\n\\n    /**\\n     * Sets the name associated with an ENS node, for reverse records.\\n     * May only be called by the owner of that node in the ENS registry.\\n     * @param node The node to update.\\n     */\\n    function setName(bytes32 node, string calldata newName) virtual external authorised(node) {\\n        names[node] = newName;\\n        emit NameChanged(node, newName);\\n    }\\n\\n    /**\\n     * Returns the name associated with an ENS node, for reverse records.\\n     * Defined in EIP181.\\n     * @param node The ENS node to query.\\n     * @return The associated name.\\n     */\\n    function name(bytes32 node) virtual override external view returns (string memory) {\\n        return names[node];\\n    }\\n\\n    function supportsInterface(bytes4 interfaceID) virtual override public pure returns(bool) {\\n        return interfaceID == type(INameResolver).interfaceId || super.supportsInterface(interfaceID);\\n    }\\n}\\n\",\"keccak256\":\"0x06906b771f7b926283a1bce5f6252d9f551470867b8bb0e5a3defc7ce3106dec\",\"license\":\"MIT\"},\"@ensdomains/ens-contracts/contracts/resolvers/profiles/TextResolver.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity >=0.8.4;\\n\\nimport \\\"../ResolverBase.sol\\\";\\nimport \\\"./ITextResolver.sol\\\";\\n\\nabstract contract TextResolver is ITextResolver, ResolverBase {\\n    mapping(bytes32=>mapping(string=>string)) texts;\\n\\n    /**\\n     * Sets the text data associated with an ENS node and key.\\n     * May only be called by the owner of that node in the ENS registry.\\n     * @param node The node to update.\\n     * @param key The key to set.\\n     * @param value The text data value to set.\\n     */\\n    function setText(bytes32 node, string calldata key, string calldata value) virtual external authorised(node) {\\n        texts[node][key] = value;\\n        emit TextChanged(node, key, key);\\n    }\\n\\n    /**\\n     * Returns the text data associated with an ENS node and key.\\n     * @param node The ENS node to query.\\n     * @param key The text data key to query.\\n     * @return The associated text data.\\n     */\\n    function text(bytes32 node, string calldata key) virtual override external view returns (string memory) {\\n        return texts[node][key];\\n    }\\n\\n    function supportsInterface(bytes4 interfaceID) virtual override public pure returns(bool) {\\n        return interfaceID == type(ITextResolver).interfaceId || super.supportsInterface(interfaceID);\\n    }\\n}\\n\",\"keccak256\":\"0x9a730678f529d8f10d6cb7aa1357374aac104a0e3a33868e8689c6359dad8b71\",\"license\":\"MIT\"},\"@openzeppelin/contracts/token/ERC721/IERC721.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts v4.4.1 (token/ERC721/IERC721.sol)\\n\\npragma solidity ^0.8.0;\\n\\nimport \\\"../../utils/introspection/IERC165.sol\\\";\\n\\n/**\\n * @dev Required interface of an ERC721 compliant contract.\\n */\\ninterface IERC721 is IERC165 {\\n    /**\\n     * @dev Emitted when `tokenId` token is transferred from `from` to `to`.\\n     */\\n    event Transfer(address indexed from, address indexed to, uint256 indexed tokenId);\\n\\n    /**\\n     * @dev Emitted when `owner` enables `approved` to manage the `tokenId` token.\\n     */\\n    event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId);\\n\\n    /**\\n     * @dev Emitted when `owner` enables or disables (`approved`) `operator` to manage all of its assets.\\n     */\\n    event ApprovalForAll(address indexed owner, address indexed operator, bool approved);\\n\\n    /**\\n     * @dev Returns the number of tokens in ``owner``'s account.\\n     */\\n    function balanceOf(address owner) external view returns (uint256 balance);\\n\\n    /**\\n     * @dev Returns the owner of the `tokenId` token.\\n     *\\n     * Requirements:\\n     *\\n     * - `tokenId` must exist.\\n     */\\n    function ownerOf(uint256 tokenId) external view returns (address owner);\\n\\n    /**\\n     * @dev Safely transfers `tokenId` token from `from` to `to`.\\n     *\\n     * Requirements:\\n     *\\n     * - `from` cannot be the zero address.\\n     * - `to` cannot be the zero address.\\n     * - `tokenId` token must exist and be owned by `from`.\\n     * - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}.\\n     * - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon a safe transfer.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function safeTransferFrom(\\n        address from,\\n        address to,\\n        uint256 tokenId,\\n        bytes calldata data\\n    ) external;\\n\\n    /**\\n     * @dev Safely transfers `tokenId` token from `from` to `to`, checking first that contract recipients\\n     * are aware of the ERC721 protocol to prevent tokens from being forever locked.\\n     *\\n     * Requirements:\\n     *\\n     * - `from` cannot be the zero address.\\n     * - `to` cannot be the zero address.\\n     * - `tokenId` token must exist and be owned by `from`.\\n     * - If the caller is not `from`, it must be have been allowed to move this token by either {approve} or {setApprovalForAll}.\\n     * - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon a safe transfer.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function safeTransferFrom(\\n        address from,\\n        address to,\\n        uint256 tokenId\\n    ) external;\\n\\n    /**\\n     * @dev Transfers `tokenId` token from `from` to `to`.\\n     *\\n     * WARNING: Usage of this method is discouraged, use {safeTransferFrom} whenever possible.\\n     *\\n     * Requirements:\\n     *\\n     * - `from` cannot be the zero address.\\n     * - `to` cannot be the zero address.\\n     * - `tokenId` token must be owned by `from`.\\n     * - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transferFrom(\\n        address from,\\n        address to,\\n        uint256 tokenId\\n    ) external;\\n\\n    /**\\n     * @dev Gives permission to `to` to transfer `tokenId` token to another account.\\n     * The approval is cleared when the token is transferred.\\n     *\\n     * Only a single account can be approved at a time, so approving the zero address clears previous approvals.\\n     *\\n     * Requirements:\\n     *\\n     * - The caller must own the token or be an approved operator.\\n     * - `tokenId` must exist.\\n     *\\n     * Emits an {Approval} event.\\n     */\\n    function approve(address to, uint256 tokenId) external;\\n\\n    /**\\n     * @dev Approve or remove `operator` as an operator for the caller.\\n     * Operators can call {transferFrom} or {safeTransferFrom} for any token owned by the caller.\\n     *\\n     * Requirements:\\n     *\\n     * - The `operator` cannot be the caller.\\n     *\\n     * Emits an {ApprovalForAll} event.\\n     */\\n    function setApprovalForAll(address operator, bool _approved) external;\\n\\n    /**\\n     * @dev Returns the account approved for `tokenId` token.\\n     *\\n     * Requirements:\\n     *\\n     * - `tokenId` must exist.\\n     */\\n    function getApproved(uint256 tokenId) external view returns (address operator);\\n\\n    /**\\n     * @dev Returns if the `operator` is allowed to manage all of the assets of `owner`.\\n     *\\n     * See {setApprovalForAll}\\n     */\\n    function isApprovedForAll(address owner, address operator) external view returns (bool);\\n}\\n\",\"keccak256\":\"0x23c3002abdabe203c93deb5ed6b1d9a4ee4d7a0313bb98b5d38da495068e0246\",\"license\":\"MIT\"},\"@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v4.5.0) (token/ERC721/extensions/IERC721Enumerable.sol)\\n\\npragma solidity ^0.8.0;\\n\\nimport \\\"../IERC721.sol\\\";\\n\\n/**\\n * @title ERC-721 Non-Fungible Token Standard, optional enumeration extension\\n * @dev See https://eips.ethereum.org/EIPS/eip-721\\n */\\ninterface IERC721Enumerable is IERC721 {\\n    /**\\n     * @dev Returns the total amount of tokens stored by the contract.\\n     */\\n    function totalSupply() external view returns (uint256);\\n\\n    /**\\n     * @dev Returns a token ID owned by `owner` at a given `index` of its token list.\\n     * Use along with {balanceOf} to enumerate all of ``owner``'s tokens.\\n     */\\n    function tokenOfOwnerByIndex(address owner, uint256 index) external view returns (uint256);\\n\\n    /**\\n     * @dev Returns a token ID at a given `index` of all the tokens stored by the contract.\\n     * Use along with {totalSupply} to enumerate all tokens.\\n     */\\n    function tokenByIndex(uint256 index) external view returns (uint256);\\n}\\n\",\"keccak256\":\"0xd1556954440b31c97a142c6ba07d5cade45f96fafd52091d33a14ebe365aecbf\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/introspection/IERC165.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts v4.4.1 (utils/introspection/IERC165.sol)\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Interface of the ERC165 standard, as defined in the\\n * https://eips.ethereum.org/EIPS/eip-165[EIP].\\n *\\n * Implementers can declare support of contract interfaces, which can then be\\n * queried by others ({ERC165Checker}).\\n *\\n * For an implementation, see {ERC165}.\\n */\\ninterface IERC165 {\\n    /**\\n     * @dev Returns true if this contract implements the interface defined by\\n     * `interfaceId`. See the corresponding\\n     * https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[EIP section]\\n     * to learn more about how these ids are created.\\n     *\\n     * This function call must use less than 30 000 gas.\\n     */\\n    function supportsInterface(bytes4 interfaceId) external view returns (bool);\\n}\\n\",\"keccak256\":\"0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1\",\"license\":\"MIT\"},\"src/KNSMultifetcher.sol\":{\"content\":\"// SPDX-License-Identifier: AGPL-3.0-only\\npragma solidity >=0.8.13;\\n\\nimport { NameRegistry } from \\\"./interfaces/NameRegistry.sol\\\";\\nimport { NamehashDB } from \\\"./interfaces/NamehashDB.sol\\\";\\nimport \\\"@ensdomains/ens-contracts/contracts/resolvers/profiles/AddrResolver.sol\\\";\\nimport \\\"@ensdomains/ens-contracts/contracts/resolvers/profiles/NameResolver.sol\\\";\\nimport \\\"@ensdomains/ens-contracts/contracts/resolvers/profiles/TextResolver.sol\\\";\\n\\n/// @title KNS Multifetcher\\n/// @author Gilgames <gilgames@kuname.domains>\\n/// @notice This contract implements utility functions used to fetch multiple\\n///         records, names, and aggregate information in a single RPC call.\\ncontract KNSMultifetcher {\\n    struct NodeMetadata {\\n        address owner;\\n        address resolver;\\n        DefaultRecords canonicalRecords;\\n    }\\n\\n    struct DefaultRecords {\\n        string name;\\n        address addr;\\n        TextRecord[] textRecords;\\n    }\\n\\n    struct TextRecord {\\n        string key;\\n        string value;\\n    }\\n\\n    NameRegistry public immutable registry;\\n    NamehashDB public immutable namehashDB;\\n\\n    string[] public defaultTextRecordsKeys = [\\n        \\\"email\\\",\\n        \\\"url\\\",\\n        \\\"avatar\\\",\\n        \\\"description\\\",\\n        \\\"notice\\\",\\n        \\\"keywords\\\",\\n        \\\"com.twitter\\\",\\n        \\\"com.discord\\\",\\n        \\\"org.telegram\\\",\\n        \\\"com.github\\\",\\n        \\\"com.reddit\\\"\\n    ];\\n\\n    constructor(NameRegistry _registry, NamehashDB _namehashDB) {\\n        registry = _registry;\\n        namehashDB = _namehashDB;\\n    }\\n\\n    function textRecordsOfNode(bytes32 _node, string[] calldata _keys)\\n        public\\n        view\\n        returns (TextRecord[] memory textRecords)\\n    {\\n        address resolver = registry.resolver(_node);\\n        if (resolver == address(0)) {\\n            return textRecords;\\n        }\\n\\n        textRecords = new TextRecord[](_keys.length);\\n        for (uint256 i = 0; i < _keys.length; i++) {\\n            textRecords[i].key = _keys[i];\\n            textRecords[i].value = TextResolver(resolver).text(_node, _keys[i]);\\n        }\\n    }\\n\\n    function canonicalRecordsOfNode(bytes32 _node) public view returns (DefaultRecords memory canonicalRecords) {\\n        address resolver = registry.resolver(_node);\\n\\n        canonicalRecords.name = NameResolver(resolver).name(_node);\\n        canonicalRecords.addr = AddrResolver(resolver).addr(_node);\\n\\n        // string[] memory keys = new string[](2);\\n        // keys[0] = \\\"rame\\\";\\n        // keys[1] = \\\"rame\\\";\\n        (bool success, bytes memory data) = address(this).staticcall(\\n            abi.encodeWithSelector(this.textRecordsOfNode.selector, _node, defaultTextRecordsKeys)\\n        );\\n        if (success) {\\n            canonicalRecords.textRecords = abi.decode(data, (TextRecord[]));\\n        }\\n    }\\n\\n    function metadataOfNode(bytes32 _node) public view returns (NodeMetadata memory metadata) {\\n        metadata.owner = registry.owner(_node);\\n        if (metadata.owner == address(0)) {\\n            return metadata;\\n        }\\n\\n        metadata.resolver = registry.resolver(_node);\\n        if (metadata.resolver == address(0)) {\\n            return metadata;\\n        }\\n\\n        metadata.canonicalRecords = canonicalRecordsOfNode(_node);\\n    }\\n\\n    function nodesOfOwner(address _owner) public view returns (bytes32[] memory nodes) {\\n        uint256 balance = registry.balanceOf(_owner);\\n        nodes = new bytes32[](balance);\\n\\n        for (uint256 i = 0; i < balance; i++) {\\n            uint256 nodeId = registry.tokenOfOwnerByIndex(_owner, i);\\n            nodes[i] = bytes32(nodeId);\\n        }\\n    }\\n\\n    function namesOfOwner(address _owner) public view returns (string[] memory names) {\\n        bytes32[] memory nodes = nodesOfOwner(_owner);\\n        names = new string[](nodes.length);\\n\\n        for (uint256 i = 0; i < nodes.length; i++) {\\n            uint256 nodeId = registry.tokenOfOwnerByIndex(_owner, i);\\n            if (nodeId == 0) {\\n                names[i] = \\\"[root]\\\";\\n                continue;\\n            }\\n            names[i] = namehashDB.lookup(bytes32(nodeId));\\n        }\\n    }\\n}\\n\",\"keccak256\":\"0x6c875e1cdb027ca50a55ac1191077bace2695542a4e0d6f7657db34164e01323\",\"license\":\"AGPL-3.0-only\"},\"src/interfaces/NameRegistry.sol\":{\"content\":\"// SPDX-License-Identifier: AGPL-3.0-only\\npragma solidity >=0.8.13;\\n\\nimport { IERC721Enumerable } from \\\"@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol\\\";\\n\\ninterface NameRegistry is IERC721Enumerable {\\n    // Logged when the owner of a node assigns a new owner to a subnode.\\n    event NewOwner(bytes32 indexed node, bytes32 indexed label, address owner);\\n\\n    // Logged when the owner of a node transfers ownership to a new account.\\n    event Transfer(bytes32 indexed node, address owner);\\n\\n    // Logged when the resolver for a node changes.\\n    event NewResolver(bytes32 indexed node, address resolver);\\n\\n    // Logged when the TTL of a node changes\\n    event NewTTL(bytes32 indexed node, uint64 ttl);\\n\\n    function setRecord(\\n        bytes32 node,\\n        address owner,\\n        address resolver,\\n        uint64 ttl\\n    ) external;\\n\\n    function setSubnodeRecord(\\n        bytes32 node,\\n        bytes32 label,\\n        address owner,\\n        address resolver,\\n        uint64 ttl\\n    ) external;\\n\\n    function setSubnodeOwner(\\n        bytes32 node,\\n        bytes32 label,\\n        address owner\\n    ) external returns (bytes32);\\n\\n    function setResolver(bytes32 node, address resolver) external;\\n\\n    function setOwner(bytes32 node, address owner) external;\\n\\n    function setTTL(bytes32 node, uint64 ttl) external;\\n\\n    function owner(bytes32 node) external view returns (address);\\n\\n    function resolver(bytes32 node) external view returns (address);\\n\\n    function ttl(bytes32 node) external view returns (uint64);\\n\\n    function recordExists(bytes32 node) external view returns (bool);\\n}\\n\",\"keccak256\":\"0xd9963577d1768ad72e0cc224e9050484667dfc68641fd4a29e5962bf4de3a2bf\",\"license\":\"AGPL-3.0-only\"},\"src/interfaces/NamehashDB.sol\":{\"content\":\"// SPDX-License-Identifier: AGPL-3.0-only\\npragma solidity >=0.8.13;\\n\\ninterface NamehashDB {\\n    /**\\n     * @dev Stores the hash and the full original name of a subnode from\\n     *      the hash of its node and the subnode label.\\n     * @param node The hash of the node parent of the subnode.\\n     * @param label The name of the subnode to be stored.\\n     */\\n    function store(bytes32 node, string calldata label) external;\\n\\n    /**\\n     * @dev Looks up the full original name of a node.\\n     * @param nodehash The hash of the node to lookup.\\n     * @return An empty string if the node is not in the DB, the name otherwise.\\n     */\\n    function lookup(bytes32 nodehash) external view returns (string memory);\\n}\\n\",\"keccak256\":\"0x06442eb99c8665cd0b833c5beffdfb01a099d03c38eaae59f88176989a0a2a62\",\"license\":\"AGPL-3.0-only\"}},\"version\":1}",
+  "bytecode": "0x600561022090815264195b585a5b60da1b6102405260c09081526003610260908152621d5c9b60ea1b6102805260e05260066102a08181526530bb30ba30b960d11b6102c05261010052600b6102e08181526a3232b9b1b934b83a34b7b760a91b6103005261012052610320918252656e6f7469636560d01b61034052610140919091526008610360908152676b6579776f72647360c01b61038052610160526103a08181526a31b7b6973a3bb4ba3a32b960a91b6103c052610180526103e08181526a18dbdb4b991a5cd8dbdc9960aa1b610400526101a052600c6104209081526b6f72672e74656c656772616d60a01b610440526101c052600a6104608181526931b7b69733b4ba343ab160b11b610480526101e0526104e06040526104a09081526918dbdb4b9c9959191a5d60b21b6104c05261020052620001479160009162000190565b503480156200015557600080fd5b50604051620018bc380380620018bc83398101604081905262000178916200030f565b6001600160a01b039182166080521660a0526200038a565b828054828255906000526020600020908101928215620001e2579160200282015b82811115620001e25782518051620001d1918491602090910190620001f4565b5091602001919060010190620001b1565b50620001f09291506200027f565b5090565b82805462000202906200034e565b90600052602060002090601f01602090048101928262000226576000855562000271565b82601f106200024157805160ff191683800117855562000271565b8280016001018555821562000271579182015b828111156200027157825182559160200191906001019062000254565b50620001f0929150620002a0565b80821115620001f0576000620002968282620002b7565b506001016200027f565b5b80821115620001f05760008155600101620002a1565b508054620002c5906200034e565b6000825580601f10620002d6575050565b601f016020900490600052602060002090810190620002f69190620002a0565b50565b6001600160a01b0381168114620002f657600080fd5b600080604083850312156200032357600080fd5b82516200033081620002f9565b60208401519092506200034381620002f9565b809150509250929050565b600181811c908216806200036357607f821691505b6020821081036200038457634e487b7160e01b600052602260045260246000fd5b50919050565b60805160a0516114d5620003e76000396000818160920152610a0c0152600081816101160152818161028201528181610320015281816103f40152818161066f0152818161093d01528181610ae00152610bc601526114d56000f3fe608060405234801561001057600080fd5b50600436106100885760003560e01c8063971dc0001161005b578063971dc00014610138578063b3b4c9bf14610158578063b5a3be8d14610178578063d217838c1461019857600080fd5b80632eb8221a1461008d57806344e57518146100d1578063724706ce146100f15780637b10399914610111575b600080fd5b6100b47f000000000000000000000000000000000000000000000000000000000000000081565b6040516001600160a01b0390911681526020015b60405180910390f35b6100e46100df366004610cc6565b6101b8565b6040516100c89190610d3b565b6101046100ff366004610cc6565b610264565b6040516100c89190610dfe565b6100b47f000000000000000000000000000000000000000000000000000000000000000081565b61014b610146366004610cc6565b6103bf565b6040516100c89190610e42565b61016b610166366004610e55565b61064b565b6040516100c89190610ed4565b61018b610186366004610f71565b6108a9565b6040516100c89190610f8e565b6101ab6101a6366004610f71565b610abb565b6040516100c89190610ff0565b600081815481106101c857600080fd5b9060005260206000200160009150905080546101e390611034565b80601f016020809104026020016040519081016040528092919081815260200182805461020f90611034565b801561025c5780601f106102315761010080835404028352916020019161025c565b820191906000526020600020905b81548152906001019060200180831161023f57829003601f168201915b505050505081565b61026c610c69565b6040516302571be360e01b8152600481018390527f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316906302571be390602401602060405180830381865afa1580156102d1573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906102f5919061106e565b6001600160a01b031680825261030a57919050565b604051630178b8bf60e01b8152600481018390527f00000000000000000000000000000000000000000000000000000000000000006001600160a01b031690630178b8bf90602401602060405180830381865afa15801561036f573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610393919061106e565b6001600160a01b0316602082018190526103ac57919050565b6103b5826103bf565b6040820152919050565b60408051606080820183528082526000602083015291810191909152604051630178b8bf60e01b8152600481018390526000907f00000000000000000000000000000000000000000000000000000000000000006001600160a01b031690630178b8bf90602401602060405180830381865afa158015610443573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610467919061106e565b60405163691f343160e01b8152600481018590529091506001600160a01b0382169063691f343190602401600060405180830381865afa1580156104af573d6000803e3d6000fd5b505050506040513d6000823e601f3d908101601f191682016040526104d7919081019061115f565b8252604051631d9dabef60e11b8152600481018490526001600160a01b03821690633b3b57de90602401602060405180830381865afa15801561051e573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610542919061106e565b6001600160a01b031660208301526040516000908190309063b3b4c9bf60e01b906105739088908590602401611194565b60408051601f198184030181529181526020820180517bffffffffffffffffffffffffffffffffffffffffffffffffffffffff167fffffffff000000000000000000000000000000000000000000000000000000009094169390931790925290516105de919061128b565b600060405180830381855afa9150503d8060008114610619576040519150601f19603f3d011682016040523d82523d6000602084013e61061e565b606091505b50915091508115610643578080602001905181019061063d91906112a7565b60408501525b505050919050565b604051630178b8bf60e01b8152600481018490526060906000906001600160a01b037f00000000000000000000000000000000000000000000000000000000000000001690630178b8bf90602401602060405180830381865afa1580156106b6573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906106da919061106e565b90506001600160a01b0381166106f057506108a2565b8267ffffffffffffffff8111156107095761070961108b565b60405190808252806020026020018201604052801561074e57816020015b60408051808201909152606080825260208201528152602001906001900390816107275790505b50915060005b8381101561089f5784848281811061076e5761076e6113c5565b905060200281019061078091906113db565b8080601f01602080910402602001604051908101604052809392919081815260200183838082843760009201919091525050855186925084915081106107c8576107c86113c5565b6020908102919091010151526001600160a01b0382166359d1d43c878787858181106107f6576107f66113c5565b905060200281019061080891906113db565b6040518463ffffffff1660e01b815260040161082693929190611429565b600060405180830381865afa158015610843573d6000803e3d6000fd5b505050506040513d6000823e601f3d908101601f1916820160405261086b919081019061115f565b83828151811061087d5761087d6113c5565b60200260200101516020018190525080806108979061145f565b915050610754565b50505b9392505050565b606060006108b683610abb565b9050805167ffffffffffffffff8111156108d2576108d261108b565b60405190808252806020026020018201604052801561090557816020015b60608152602001906001900390816108f05790505b50915060005b8151811015610ab457604051632f745c5960e01b81526001600160a01b038581166004830152602482018390526000917f000000000000000000000000000000000000000000000000000000000000000090911690632f745c5990604401602060405180830381865afa158015610986573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906109aa9190611486565b9050806000036109f657604051806040016040528060068152602001655b726f6f745d60d01b8152508483815181106109e5576109e56113c5565b602002602001018190525050610aa2565b60405163f39ec1f760e01b8152600481018290527f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03169063f39ec1f790602401600060405180830381865afa158015610a5b573d6000803e3d6000fd5b505050506040513d6000823e601f3d908101601f19168201604052610a83919081019061115f565b848381518110610a9557610a956113c5565b6020026020010181905250505b80610aac8161145f565b91505061090b565b5050919050565b6040516370a0823160e01b81526001600160a01b0382811660048301526060916000917f000000000000000000000000000000000000000000000000000000000000000016906370a0823190602401602060405180830381865afa158015610b27573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610b4b9190611486565b90508067ffffffffffffffff811115610b6657610b6661108b565b604051908082528060200260200182016040528015610b8f578160200160208202803683370190505b50915060005b81811015610ab457604051632f745c5960e01b81526001600160a01b038581166004830152602482018390526000917f000000000000000000000000000000000000000000000000000000000000000090911690632f745c5990604401602060405180830381865afa158015610c0f573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610c339190611486565b90508060001b848381518110610c4b57610c4b6113c5565b60209081029190910101525080610c618161145f565b915050610b95565b604051806060016040528060006001600160a01b0316815260200160006001600160a01b03168152602001610cc160405180606001604052806060815260200160006001600160a01b03168152602001606081525090565b905290565b600060208284031215610cd857600080fd5b5035919050565b60005b83811015610cfa578181015183820152602001610ce2565b83811115610d09576000848401525b50505050565b60008151808452610d27816020860160208601610cdf565b601f01601f19169290920160200192915050565b6020815260006108a26020830184610d0f565b6000815160608452610d636060850182610d0f565b905060206001600160a01b03818501511681860152604080850151868403828801528381518086528486019150848160051b870101858401935060005b82811015610df057878203601f1901845284518051878452610dc488850182610d0f565b91890151848303858b0152919050610ddc8183610d0f565b968901969589019593505050600101610da0565b509998505050505050505050565b6020815260006001600160a01b03808451166020840152806020850151166040840152506040830151606080840152610e3a6080840182610d4e565b949350505050565b6020815260006108a26020830184610d4e565b600080600060408486031215610e6a57600080fd5b83359250602084013567ffffffffffffffff80821115610e8957600080fd5b818601915086601f830112610e9d57600080fd5b813581811115610eac57600080fd5b8760208260051b8501011115610ec157600080fd5b6020830194508093505050509250925092565b60006020808301818452808551808352604092508286019150828160051b87010184880160005b83811015610f4b57888303603f1901855281518051878552610f1f88860182610d0f565b91890151858303868b0152919050610f378183610d0f565b968901969450505090860190600101610efb565b509098975050505050505050565b6001600160a01b0381168114610f6e57600080fd5b50565b600060208284031215610f8357600080fd5b81356108a281610f59565b6000602080830181845280855180835260408601915060408160051b870101925083870160005b82811015610fe357603f19888603018452610fd1858351610d0f565b94509285019290850190600101610fb5565b5092979650505050505050565b6020808252825182820181905260009190848201906040850190845b818110156110285783518352928401929184019160010161100c565b50909695505050505050565b600181811c9082168061104857607f821691505b60208210810361106857634e487b7160e01b600052602260045260246000fd5b50919050565b60006020828403121561108057600080fd5b81516108a281610f59565b634e487b7160e01b600052604160045260246000fd5b6040805190810167ffffffffffffffff811182821017156110c4576110c461108b565b60405290565b604051601f8201601f1916810167ffffffffffffffff811182821017156110f3576110f361108b565b604052919050565b600082601f83011261110c57600080fd5b815167ffffffffffffffff8111156111265761112661108b565b611139601f8201601f19166020016110ca565b81815284602083860101111561114e57600080fd5b610e3a826020830160208701610cdf565b60006020828403121561117157600080fd5b815167ffffffffffffffff81111561118857600080fd5b610e3a848285016110fb565b600060408201848352602060408185015281855480845260608601915060608160051b87010193506000878152838120815b8381101561127c57888703605f1901855281548390600181811c90808316806111f057607f831692505b8a8310810361120d57634e487b7160e01b88526022600452602488fd5b828c5260208c01818015611228576001811461123957611263565b60ff19861682528c82019650611263565b6000898152602090208a5b8681101561125d57815484820152908501908e01611244565b83019750505b50949b50509789019794909401935050506001016111c6565b50949998505050505050505050565b6000825161129d818460208701610cdf565b9190910192915050565b600060208083850312156112ba57600080fd5b825167ffffffffffffffff808211156112d257600080fd5b818501915085601f8301126112e657600080fd5b8151818111156112f8576112f861108b565b8060051b6113078582016110ca565b918252838101850191858101908984111561132157600080fd5b86860192505b838310156113b85782518581111561133f5760008081fd5b86016040818c03601f19018113156113575760008081fd5b61135f6110a1565b89830151888111156113715760008081fd5b61137f8e8c838701016110fb565b8252509082015190878211156113955760008081fd5b6113a38d8b848601016110fb565b818b0152845250509186019190860190611327565b9998505050505050505050565b634e487b7160e01b600052603260045260246000fd5b6000808335601e198436030181126113f257600080fd5b83018035915067ffffffffffffffff82111561140d57600080fd5b60200191503681900382131561142257600080fd5b9250929050565b83815260406020820152816040820152818360608301376000818301606090810191909152601f909201601f1916010192915050565b60006001820161147f57634e487b7160e01b600052601160045260246000fd5b5060010190565b60006020828403121561149857600080fd5b505191905056fea2646970667358221220526aa300808b10140903a53b0b7869224e22c9bf1d76a9f2cc55798d127ea7a564736f6c634300080d0033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100885760003560e01c8063971dc0001161005b578063971dc00014610138578063b3b4c9bf14610158578063b5a3be8d14610178578063d217838c1461019857600080fd5b80632eb8221a1461008d57806344e57518146100d1578063724706ce146100f15780637b10399914610111575b600080fd5b6100b47f000000000000000000000000000000000000000000000000000000000000000081565b6040516001600160a01b0390911681526020015b60405180910390f35b6100e46100df366004610cc6565b6101b8565b6040516100c89190610d3b565b6101046100ff366004610cc6565b610264565b6040516100c89190610dfe565b6100b47f000000000000000000000000000000000000000000000000000000000000000081565b61014b610146366004610cc6565b6103bf565b6040516100c89190610e42565b61016b610166366004610e55565b61064b565b6040516100c89190610ed4565b61018b610186366004610f71565b6108a9565b6040516100c89190610f8e565b6101ab6101a6366004610f71565b610abb565b6040516100c89190610ff0565b600081815481106101c857600080fd5b9060005260206000200160009150905080546101e390611034565b80601f016020809104026020016040519081016040528092919081815260200182805461020f90611034565b801561025c5780601f106102315761010080835404028352916020019161025c565b820191906000526020600020905b81548152906001019060200180831161023f57829003601f168201915b505050505081565b61026c610c69565b6040516302571be360e01b8152600481018390527f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316906302571be390602401602060405180830381865afa1580156102d1573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906102f5919061106e565b6001600160a01b031680825261030a57919050565b604051630178b8bf60e01b8152600481018390527f00000000000000000000000000000000000000000000000000000000000000006001600160a01b031690630178b8bf90602401602060405180830381865afa15801561036f573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610393919061106e565b6001600160a01b0316602082018190526103ac57919050565b6103b5826103bf565b6040820152919050565b60408051606080820183528082526000602083015291810191909152604051630178b8bf60e01b8152600481018390526000907f00000000000000000000000000000000000000000000000000000000000000006001600160a01b031690630178b8bf90602401602060405180830381865afa158015610443573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610467919061106e565b60405163691f343160e01b8152600481018590529091506001600160a01b0382169063691f343190602401600060405180830381865afa1580156104af573d6000803e3d6000fd5b505050506040513d6000823e601f3d908101601f191682016040526104d7919081019061115f565b8252604051631d9dabef60e11b8152600481018490526001600160a01b03821690633b3b57de90602401602060405180830381865afa15801561051e573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610542919061106e565b6001600160a01b031660208301526040516000908190309063b3b4c9bf60e01b906105739088908590602401611194565b60408051601f198184030181529181526020820180517bffffffffffffffffffffffffffffffffffffffffffffffffffffffff167fffffffff000000000000000000000000000000000000000000000000000000009094169390931790925290516105de919061128b565b600060405180830381855afa9150503d8060008114610619576040519150601f19603f3d011682016040523d82523d6000602084013e61061e565b606091505b50915091508115610643578080602001905181019061063d91906112a7565b60408501525b505050919050565b604051630178b8bf60e01b8152600481018490526060906000906001600160a01b037f00000000000000000000000000000000000000000000000000000000000000001690630178b8bf90602401602060405180830381865afa1580156106b6573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906106da919061106e565b90506001600160a01b0381166106f057506108a2565b8267ffffffffffffffff8111156107095761070961108b565b60405190808252806020026020018201604052801561074e57816020015b60408051808201909152606080825260208201528152602001906001900390816107275790505b50915060005b8381101561089f5784848281811061076e5761076e6113c5565b905060200281019061078091906113db565b8080601f01602080910402602001604051908101604052809392919081815260200183838082843760009201919091525050855186925084915081106107c8576107c86113c5565b6020908102919091010151526001600160a01b0382166359d1d43c878787858181106107f6576107f66113c5565b905060200281019061080891906113db565b6040518463ffffffff1660e01b815260040161082693929190611429565b600060405180830381865afa158015610843573d6000803e3d6000fd5b505050506040513d6000823e601f3d908101601f1916820160405261086b919081019061115f565b83828151811061087d5761087d6113c5565b60200260200101516020018190525080806108979061145f565b915050610754565b50505b9392505050565b606060006108b683610abb565b9050805167ffffffffffffffff8111156108d2576108d261108b565b60405190808252806020026020018201604052801561090557816020015b60608152602001906001900390816108f05790505b50915060005b8151811015610ab457604051632f745c5960e01b81526001600160a01b038581166004830152602482018390526000917f000000000000000000000000000000000000000000000000000000000000000090911690632f745c5990604401602060405180830381865afa158015610986573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906109aa9190611486565b9050806000036109f657604051806040016040528060068152602001655b726f6f745d60d01b8152508483815181106109e5576109e56113c5565b602002602001018190525050610aa2565b60405163f39ec1f760e01b8152600481018290527f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03169063f39ec1f790602401600060405180830381865afa158015610a5b573d6000803e3d6000fd5b505050506040513d6000823e601f3d908101601f19168201604052610a83919081019061115f565b848381518110610a9557610a956113c5565b6020026020010181905250505b80610aac8161145f565b91505061090b565b5050919050565b6040516370a0823160e01b81526001600160a01b0382811660048301526060916000917f000000000000000000000000000000000000000000000000000000000000000016906370a0823190602401602060405180830381865afa158015610b27573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610b4b9190611486565b90508067ffffffffffffffff811115610b6657610b6661108b565b604051908082528060200260200182016040528015610b8f578160200160208202803683370190505b50915060005b81811015610ab457604051632f745c5960e01b81526001600160a01b038581166004830152602482018390526000917f000000000000000000000000000000000000000000000000000000000000000090911690632f745c5990604401602060405180830381865afa158015610c0f573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610c339190611486565b90508060001b848381518110610c4b57610c4b6113c5565b60209081029190910101525080610c618161145f565b915050610b95565b604051806060016040528060006001600160a01b0316815260200160006001600160a01b03168152602001610cc160405180606001604052806060815260200160006001600160a01b03168152602001606081525090565b905290565b600060208284031215610cd857600080fd5b5035919050565b60005b83811015610cfa578181015183820152602001610ce2565b83811115610d09576000848401525b50505050565b60008151808452610d27816020860160208601610cdf565b601f01601f19169290920160200192915050565b6020815260006108a26020830184610d0f565b6000815160608452610d636060850182610d0f565b905060206001600160a01b03818501511681860152604080850151868403828801528381518086528486019150848160051b870101858401935060005b82811015610df057878203601f1901845284518051878452610dc488850182610d0f565b91890151848303858b0152919050610ddc8183610d0f565b968901969589019593505050600101610da0565b509998505050505050505050565b6020815260006001600160a01b03808451166020840152806020850151166040840152506040830151606080840152610e3a6080840182610d4e565b949350505050565b6020815260006108a26020830184610d4e565b600080600060408486031215610e6a57600080fd5b83359250602084013567ffffffffffffffff80821115610e8957600080fd5b818601915086601f830112610e9d57600080fd5b813581811115610eac57600080fd5b8760208260051b8501011115610ec157600080fd5b6020830194508093505050509250925092565b60006020808301818452808551808352604092508286019150828160051b87010184880160005b83811015610f4b57888303603f1901855281518051878552610f1f88860182610d0f565b91890151858303868b0152919050610f378183610d0f565b968901969450505090860190600101610efb565b509098975050505050505050565b6001600160a01b0381168114610f6e57600080fd5b50565b600060208284031215610f8357600080fd5b81356108a281610f59565b6000602080830181845280855180835260408601915060408160051b870101925083870160005b82811015610fe357603f19888603018452610fd1858351610d0f565b94509285019290850190600101610fb5565b5092979650505050505050565b6020808252825182820181905260009190848201906040850190845b818110156110285783518352928401929184019160010161100c565b50909695505050505050565b600181811c9082168061104857607f821691505b60208210810361106857634e487b7160e01b600052602260045260246000fd5b50919050565b60006020828403121561108057600080fd5b81516108a281610f59565b634e487b7160e01b600052604160045260246000fd5b6040805190810167ffffffffffffffff811182821017156110c4576110c461108b565b60405290565b604051601f8201601f1916810167ffffffffffffffff811182821017156110f3576110f361108b565b604052919050565b600082601f83011261110c57600080fd5b815167ffffffffffffffff8111156111265761112661108b565b611139601f8201601f19166020016110ca565b81815284602083860101111561114e57600080fd5b610e3a826020830160208701610cdf565b60006020828403121561117157600080fd5b815167ffffffffffffffff81111561118857600080fd5b610e3a848285016110fb565b600060408201848352602060408185015281855480845260608601915060608160051b87010193506000878152838120815b8381101561127c57888703605f1901855281548390600181811c90808316806111f057607f831692505b8a8310810361120d57634e487b7160e01b88526022600452602488fd5b828c5260208c01818015611228576001811461123957611263565b60ff19861682528c82019650611263565b6000898152602090208a5b8681101561125d57815484820152908501908e01611244565b83019750505b50949b50509789019794909401935050506001016111c6565b50949998505050505050505050565b6000825161129d818460208701610cdf565b9190910192915050565b600060208083850312156112ba57600080fd5b825167ffffffffffffffff808211156112d257600080fd5b818501915085601f8301126112e657600080fd5b8151818111156112f8576112f861108b565b8060051b6113078582016110ca565b918252838101850191858101908984111561132157600080fd5b86860192505b838310156113b85782518581111561133f5760008081fd5b86016040818c03601f19018113156113575760008081fd5b61135f6110a1565b89830151888111156113715760008081fd5b61137f8e8c838701016110fb565b8252509082015190878211156113955760008081fd5b6113a38d8b848601016110fb565b818b0152845250509186019190860190611327565b9998505050505050505050565b634e487b7160e01b600052603260045260246000fd5b6000808335601e198436030181126113f257600080fd5b83018035915067ffffffffffffffff82111561140d57600080fd5b60200191503681900382131561142257600080fd5b9250929050565b83815260406020820152816040820152818360608301376000818301606090810191909152601f909201601f1916010192915050565b60006001820161147f57634e487b7160e01b600052601160045260246000fd5b5060010190565b60006020828403121561149857600080fd5b505191905056fea2646970667358221220526aa300808b10140903a53b0b7869224e22c9bf1d76a9f2cc55798d127ea7a564736f6c634300080d0033",
+  "devdoc": {
+    "author": "Gilgames <gilgames@kuname.domains>",
+    "kind": "dev",
+    "methods": {},
+    "title": "KNS Multifetcher",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "notice": "This contract implements utility functions used to fetch multiple         records, names, and aggregate information in a single RPC call.",
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 6919,
+        "contract": "src/KNSMultifetcher.sol:KNSMultifetcher",
+        "label": "defaultTextRecordsKeys",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_array(t_string_storage)dyn_storage"
+      }
+    ],
+    "types": {
+      "t_array(t_string_storage)dyn_storage": {
+        "base": "t_string_storage",
+        "encoding": "dynamic_array",
+        "label": "string[]",
+        "numberOfBytes": "32"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}
