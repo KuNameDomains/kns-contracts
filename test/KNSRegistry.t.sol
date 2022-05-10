@@ -213,27 +213,42 @@ contract KNSRegistryTest is DSTestPlusPlus {
     }
 
     function testPauseUnpause() public {
+        bytes32 tld1Hash = keccak256(abi.encodePacked("tld1"));
+        bytes32 tld2Hash = keccak256(abi.encodePacked("tld2"));
+        bytes32 sldHash = keccak256(abi.encodePacked("sld"));
+
         assertFalse(registry.paused());
 
-        bytes32 tld = registry.setSubnodeOwner(bytes32(0), keccak256(abi.encodePacked("tld1")), address(this));
-        registry.setSubnodeOwner(tld, keccak256(abi.encodePacked("sld")), address(this));
-        registry.transferFrom(address(this), address(this), uint256(tld));
+        bytes32 tldNode = registry.setSubnodeOwner(bytes32(0), tld1Hash, address(this));
+        registry.setSubnodeOwner(tldNode, sldHash, address(this));
+        registry.transferFrom(address(this), address(this), uint256(tldNode));
 
         registry.pause();
         assertTrue(registry.paused());
 
         vm.expectRevert("Pausable: paused");
-        registry.setSubnodeOwner(bytes32(0), keccak256(abi.encodePacked("tld2")), address(this));
+        registry.setRecord(bytes32(0), address(1), address(1), 0);
 
         vm.expectRevert("Pausable: paused");
-        registry.transferFrom(address(this), address(this), uint256(tld));
+        registry.setSubnodeRecord(bytes32(0), tld2Hash, address(1), address(1), 0);
+
+        vm.expectRevert("Pausable: paused");
+        registry.setSubnodeOwner(bytes32(0), tld2Hash, address(this));
+
+        vm.expectRevert("Pausable: paused");
+        registry.setOwner(bytes32(0), address(this));
+
+        vm.expectRevert("Pausable: paused");
+        registry.transferFrom(address(this), address(this), uint256(tldNode));
+
+        vm.expectRevert("Pausable: paused");
+        registry.safeTransferFrom(address(this), address(this), uint256(tldNode));
 
         registry.unpause();
         assertFalse(registry.paused());
 
-        bytes32 tld2 = registry.setSubnodeOwner(bytes32(0), keccak256(abi.encodePacked("tld2")), address(this));
-        registry.setSubnodeOwner(tld2, keccak256(abi.encodePacked("sld")), address(this));
-        registry.transferFrom(address(this), address(this), uint256(tld2));
+        bytes32 sldNode = registry.setSubnodeOwner(tldNode, sldHash, address(this));
+        registry.transferFrom(address(this), address(this), uint256(sldNode));
     }
 
     function testPauseUnpauseUnauthorized() public {
