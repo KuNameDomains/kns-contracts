@@ -189,6 +189,29 @@ contract KNSRegistryTest is DSTestPlusPlus {
         registry.safeTransferFrom(owner, address(this), nodeID);
     }
 
+    function testCannotBurn() public {
+        bytes32 tldHash = keccak256(abi.encodePacked("tld"));
+        bytes32 node = registry.setSubnodeOwner(bytes32(0), tldHash, address(this));
+
+        vm.expectRevert(bytes("ERC721: transfer to the zero address"));
+        registry.transferFrom(address(this), address(0), uint256(node));
+
+        vm.expectRevert(bytes("ERC721: transfer to the zero address"));
+        registry.safeTransferFrom(address(this), address(0), uint256(node));
+
+        vm.expectRevert(bytes("ERC721: transfer to the zero address"));
+        registry.setOwner(node, address(0));
+
+        vm.expectRevert(bytes("ERC721: transfer to the zero address"));
+        registry.setSubnodeOwner(bytes32(0), tldHash, address(0));
+
+        vm.expectRevert(bytes("ERC721: transfer to the zero address"));
+        registry.setRecord(node, address(0), address(1), 0);
+
+        vm.expectRevert(bytes("ERC721: transfer to the zero address"));
+        registry.setSubnodeRecord(bytes32(0), tldHash, address(0), address(1), 0);
+    }
+
     function testPauseUnpause() public {
         assertFalse(registry.paused());
 

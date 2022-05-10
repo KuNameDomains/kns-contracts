@@ -78,11 +78,7 @@ contract KNSRegistry is ERC721, NameRegistry, ERC721Enumerable, Pausable {
      */
     function setOwner(bytes32 node, address _owner) public virtual authorised(node) {
         uint256 nodeID = uint256(node);
-        if (_owner == address(0)) {
-            _burn(nodeID);
-        } else {
-            _transfer(owner(node), _owner, nodeID);
-        }
+        _transfer(owner(node), _owner, nodeID);
     }
 
     /**
@@ -101,8 +97,6 @@ contract KNSRegistry is ERC721, NameRegistry, ERC721Enumerable, Pausable {
         // it will revert if node doesn't exists and _owner is 0
         if (!_exists(subnodeID)) {
             _mint(_owner, subnodeID);
-        } else if (_owner == address(0)) {
-            _burn(subnodeID);
         } else {
             _transfer(owner(subnode), _owner, subnodeID);
         }
