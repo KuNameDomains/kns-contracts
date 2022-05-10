@@ -4,6 +4,7 @@ pragma solidity >=0.8.13;
 import { NameRegistry } from "./interfaces/NameRegistry.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
+import "@openzeppelin/contracts/security/Pausable.sol";
 
 error Unauthorized();
 
@@ -11,7 +12,7 @@ error Unauthorized();
 /// @author Gilgames <gilgames@kuname.domains>
 /// @notice This contract is inspired by the ENS registry, but it is designed
 ///         to be compatible with the ERC721 standard out-of-the-box.
-contract KNSRegistry is ERC721, NameRegistry, ERC721Enumerable {
+contract KNSRegistry is ERC721, NameRegistry, ERC721Enumerable, Pausable {
     struct Record {
         address resolver;
         uint64 ttl;
@@ -194,13 +195,21 @@ contract KNSRegistry is ERC721, NameRegistry, ERC721Enumerable {
         }
     }
 
+    function pause() public authorised(0x0) {
+        _pause();
+    }
+
+    function unpause() public authorised(0x0) {
+        _unpause();
+    }
+
     // The following functions are overrides required by Solidity.
 
     function _beforeTokenTransfer(
         address from,
         address to,
         uint256 tokenId
-    ) internal override(ERC721, ERC721Enumerable) {
+    ) internal override(ERC721, ERC721Enumerable) whenNotPaused {
         super._beforeTokenTransfer(from, to, tokenId);
     }
 

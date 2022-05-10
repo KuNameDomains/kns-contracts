@@ -188,4 +188,38 @@ contract KNSRegistryTest is DSTestPlusPlus {
         vm.expectRevert(bytes("ERC721: transfer caller is not owner nor approved"));
         registry.safeTransferFrom(owner, address(this), nodeID);
     }
+
+    function testPauseUnpause() public {
+        assertFalse(registry.paused());
+
+        bytes32 tld = registry.setSubnodeOwner(bytes32(0), keccak256(abi.encodePacked("tld1")), address(this));
+        registry.setSubnodeOwner(tld, keccak256(abi.encodePacked("sld")), address(this));
+        registry.transferFrom(address(this), address(this), uint256(tld));
+
+        registry.pause();
+        assertTrue(registry.paused());
+
+        vm.expectRevert("Pausable: paused");
+        registry.setSubnodeOwner(bytes32(0), keccak256(abi.encodePacked("tld2")), address(this));
+
+        vm.expectRevert("Pausable: paused");
+        registry.transferFrom(address(this), address(this), uint256(tld));
+
+        registry.unpause();
+        assertFalse(registry.paused());
+
+        bytes32 tld2 = registry.setSubnodeOwner(bytes32(0), keccak256(abi.encodePacked("tld2")), address(this));
+        registry.setSubnodeOwner(tld2, keccak256(abi.encodePacked("sld")), address(this));
+        registry.transferFrom(address(this), address(this), uint256(tld2));
+    }
+
+    function testPauseUnpauseUnauthorized() public {
+        vm.startPrank(address(1));
+
+        vm.expectRevert(Unauthorized.selector);
+        registry.pause();
+
+        vm.expectRevert(Unauthorized.selector);
+        registry.unpause();
+    }
 }
