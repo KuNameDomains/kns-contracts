@@ -19,3 +19,6 @@
 [submodule "lib/buffer"]
 	path = lib/buffer
 	url = https://github.com/ensdomains/buffer
+[submodule "lib/witnet-solidity-bridge"]
+	path = lib/witnet-solidity-bridge
+	url = https://github.com/witnet/witnet-solidity-bridge
