@@ -73,7 +73,9 @@ contract KNSRegistrar is NameRegistrar, Ownable {
         bytes32 hashedName = keccak256(abi.encodePacked(name));
         registry.setSubnodeOwner(tldNode, hashedName, owner);
 
-        namehashDB.store(tldNode, name);
+        if (address(namehashDB) != address(0)) {
+            namehashDB.store(tldNode, name);
+        }
 
         emit NameRegistered(hashedName, owner);
 
