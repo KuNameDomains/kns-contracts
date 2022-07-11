@@ -17,12 +17,6 @@ fuzz_runs = 1_000
 remappings = [
   "@ds=lib/ds-test/src/",
   "@std=lib/forge-std/src/",
-  "@rari-capital/solmate=lib/solmate/src/",
-  "@clones=lib/clones-with-immutable-args/src/",
-  "@ensdomains/buffer=lib/buffer/",
-  "@ensdomains/ens-contracts=lib/ens-contracts/",
-  "witnet-solidity-bridge/contracts=lib/witnet-solidity-bridge/contracts",
-  "@openzeppelin=lib/openzeppelin-contracts/"
 ]
 test = 'test'
 
