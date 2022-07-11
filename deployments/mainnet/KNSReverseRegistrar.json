@@ -1,43 +1,23 @@
 {
-  "address": "0x77a09DedfF79c01A10EC12a9b11AF2b744Fd2014",
+  "address": "0xBd6F7d32a6CD0764D546e6A28D3Ba38645284F5F",
   "abi": [
     {
       "inputs": [
         {
-          "internalType": "contract NameRegistry",
+          "internalType": "contract KNSRegistry",
           "name": "_registry",
           "type": "address"
         },
         {
-          "internalType": "contract NamehashDB",
-          "name": "_namehashDB",
+          "internalType": "contract NameResolver",
+          "name": "_defaultResolver",
           "type": "address"
-        },
-        {
-          "internalType": "bytes32",
-          "name": "_tldNode",
-          "type": "bytes32"
         }
       ],
       "stateMutability": "nonpayable",
       "type": "constructor"
     },
     {
-      "inputs": [],
-      "name": "RegistrarNotLive",
-      "type": "error"
-    },
-    {
-      "inputs": [],
-      "name": "Unauthorized",
-      "type": "error"
-    },
-    {
-      "inputs": [],
-      "name": "UnavailableName",
-      "type": "error"
-    },
-    {
       "anonymous": false,
       "inputs": [
         {
@@ -45,41 +25,15 @@
           "internalType": "address",
           "name": "controller",
           "type": "address"
-        }
-      ],
-      "name": "ControllerAdded",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "internalType": "address",
-          "name": "controller",
-          "type": "address"
-        }
-      ],
-      "name": "ControllerRemoved",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "internalType": "bytes32",
-          "name": "hashedName",
-          "type": "bytes32"
         },
         {
-          "indexed": true,
-          "internalType": "address",
-          "name": "owner",
-          "type": "address"
+          "indexed": false,
+          "internalType": "bool",
+          "name": "enabled",
+          "type": "bool"
         }
       ],
-      "name": "NameRegistered",
+      "name": "ControllerChanged",
       "type": "event"
     },
     {
@@ -102,35 +56,94 @@
       "type": "event"
     },
     {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "addr",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "node",
+          "type": "bytes32"
+        }
+      ],
+      "name": "ReverseClaimed",
+      "type": "event"
+    },
+    {
       "inputs": [
         {
           "internalType": "address",
-          "name": "controller",
+          "name": "owner",
           "type": "address"
         }
       ],
-      "name": "addController",
-      "outputs": [],
+      "name": "claim",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
       "stateMutability": "nonpayable",
       "type": "function"
     },
     {
       "inputs": [
         {
-          "internalType": "string",
-          "name": "name",
-          "type": "string"
+          "internalType": "address",
+          "name": "addr",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "resolver",
+          "type": "address"
         }
       ],
-      "name": "available",
+      "name": "claimForAddr",
       "outputs": [
         {
-          "internalType": "bool",
+          "internalType": "bytes32",
           "name": "",
-          "type": "bool"
+          "type": "bytes32"
         }
       ],
-      "stateMutability": "view",
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "resolver",
+          "type": "address"
+        }
+      ],
+      "name": "claimWithResolver",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
@@ -154,15 +167,34 @@
     },
     {
       "inputs": [],
-      "name": "namehashDB",
+      "name": "defaultResolver",
       "outputs": [
         {
-          "internalType": "contract NamehashDB",
+          "internalType": "contract NameResolver",
           "name": "",
           "type": "address"
         }
       ],
       "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "addr",
+          "type": "address"
+        }
+      ],
+      "name": "node",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "pure",
       "type": "function"
     },
     {
@@ -179,53 +211,16 @@
       "type": "function"
     },
     {
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "name",
-          "type": "string"
-        },
-        {
-          "internalType": "address",
-          "name": "owner",
-          "type": "address"
-        }
-      ],
-      "name": "register",
-      "outputs": [
-        {
-          "internalType": "bytes32",
-          "name": "",
-          "type": "bytes32"
-        }
-      ],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
       "inputs": [],
       "name": "registry",
       "outputs": [
         {
-          "internalType": "contract NameRegistry",
+          "internalType": "contract KNSRegistry",
           "name": "",
           "type": "address"
         }
       ],
       "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "controller",
-          "type": "address"
-        }
-      ],
-      "name": "removeController",
-      "outputs": [],
-      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
@@ -238,12 +233,17 @@
     {
       "inputs": [
         {
-          "internalType": "contract NamehashDB",
-          "name": "_namehashDB",
+          "internalType": "address",
+          "name": "controller",
           "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "enabled",
+          "type": "bool"
         }
       ],
-      "name": "setNamehashDB",
+      "name": "setController",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -256,14 +256,20 @@
           "type": "address"
         }
       ],
-      "name": "setResolver",
+      "name": "setDefaultResolver",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
     },
     {
-      "inputs": [],
-      "name": "tldNode",
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "name": "setName",
       "outputs": [
         {
           "internalType": "bytes32",
@@ -271,7 +277,41 @@
           "type": "bytes32"
         }
       ],
-      "stateMutability": "view",
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "addr",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "resolver",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "name": "setNameForAddr",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
