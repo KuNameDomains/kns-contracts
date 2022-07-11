@@ -6,7 +6,6 @@ import { KNSRegistry } from "./KNSRegistry.sol";
 import { KNSPublicResolver, NameResolver } from "./KNSPublicResolver.sol";
 import { KNSReverseRegistrar } from "./KNSReverseRegistrar.sol";
 import { NamehashDB } from "./interfaces/NamehashDB.sol";
-import { KNSRegistrarController } from "./KNSRegistrarController.sol";
 
 /// @title KNS Deployer
 /// @author Gilgames <gilgames@kuname.domains>
@@ -21,7 +20,6 @@ contract KNSDeployer {
     KNSReverseRegistrar public reverseRegistrar;
     KNSPublicResolver public publicResolver;
     NamehashDB public namehashDB;
-    KNSRegistrarController public controller;
 
     function namehash(bytes32 node, bytes32 label) public pure returns (bytes32) {
         return keccak256(abi.encodePacked(node, label));
@@ -46,11 +44,6 @@ contract KNSDeployer {
         reverseRegistrar = new KNSReverseRegistrar(registry, NameResolver(address(publicResolver)));
         publicResolver.setController(address(reverseRegistrar), true);
 
-        controller = new KNSRegistrarController(registrar, reverseRegistrar);
-        registrar.addController(address(controller));
-        reverseRegistrar.setController(address(controller), true);
-        publicResolver.setController(address(controller), true);
-
         registry.setSubnodeOwner(bytes32(0), REVERSE_REGISTRAR_LABEL, address(this));
         registry.setSubnodeOwner(namehash(bytes32(0), REVERSE_REGISTRAR_LABEL), ADDR_LABEL, address(reverseRegistrar));
 
@@ -60,5 +53,6 @@ contract KNSDeployer {
 
         registrar.transferOwnership(msg.sender);
         reverseRegistrar.transferOwnership(msg.sender);
+        publicResolver.transferOwnership(msg.sender);
     }
 }

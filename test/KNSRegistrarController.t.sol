@@ -7,14 +7,17 @@ import { KNSDeployer } from "../src/KNSDeployer.sol";
 import { NamehashDB } from "../src/interfaces/NamehashDB.sol";
 import { NameRegistrar } from "../src/interfaces/NameRegistrar.sol";
 import { KNSRegistrarController } from "../src/KNSRegistrarController.sol";
+import { KNSRegistrarControllerDeployer } from "../src/KNSRegistrarControllerDeployer.sol";
 import { KNSPublicResolver } from "../src/KNSPublicResolver.sol";
-import { IReverseRegistrar } from "@ensdomains/ens-contracts/contracts/registry/IReverseRegistrar.sol";
+import { KNSReverseRegistrar } from "../src/KNSReverseRegistrar.sol";
+import { KNSPriceOracle } from "../src/KNSPriceOracle.sol";
 
 contract KNSRegistrarControllerTest is DSTestPlusPlus {
     NameRegistrar registrar;
-    IReverseRegistrar reverseRegistrar;
+    KNSReverseRegistrar reverseRegistrar;
     KNSPublicResolver resolver;
     KNSRegistrarController controller;
+    address priceOracle = address(1);
 
     function setUp() public {
         NamehashDB namehashDB = (new NamehashDBDeployer()).namehashDB();
@@ -22,7 +25,18 @@ contract KNSRegistrarControllerTest is DSTestPlusPlus {
         registrar = deployer.registrar();
         reverseRegistrar = deployer.reverseRegistrar();
         resolver = deployer.publicResolver();
-        controller = deployer.controller();
+        controller = new KNSRegistrarController(registrar, reverseRegistrar);
+
+        vm.mockCall(
+            priceOracle,
+            abi.encodeWithSelector(KNSPriceOracle.getNamePriceInKCSForBuyer.selector),
+            abi.encode(1 ether)
+        );
+
+        controller.setPriceOracle(priceOracle);
+        registrar.addController(address(controller));
+        reverseRegistrar.setController(address(controller), true);
+        resolver.setController(address(controller), true);
     }
 
     function testRegistration(string calldata name) public {
@@ -33,6 +47,10 @@ contract KNSRegistrarControllerTest is DSTestPlusPlus {
         // );
 
         // vm.expectRevert(RegistrarNotLive.selector);
-        controller.register(name, address(this), address(resolver), address(this), true);
+        vm.deal(address(2), 1 ether);
+        vm.startPrank(address(2));
+        controller.register{ value: 1 ether }(name, address(this), address(resolver), address(this), true);
     }
+
+    receive() external payable {}
 }

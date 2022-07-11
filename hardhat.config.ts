@@ -40,12 +40,14 @@ const config: HardhatUserConfig = {
             live: true,
             url: process.env.TESTNET_RPC_URL ?? '',
             accounts: process.env.TESTNET_PRIVATE_KEY ? [process.env.TESTNET_PRIVATE_KEY] : undefined,
+            gasPrice: 1.02 * 10 ** 9,
             saveDeployments: true,
         },
         mainnet: {
             live: true,
             url: process.env.MAINNET_RPC_URL ?? '',
             accounts: process.env.MAINNET_PRIVATE_KEY ? [process.env.MAINNET_PRIVATE_KEY] : undefined,
+            gasPrice: 1.02 * 10 ** 9,
             saveDeployments: true,
         },
     }

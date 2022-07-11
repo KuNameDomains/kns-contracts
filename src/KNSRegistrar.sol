@@ -65,19 +65,19 @@ contract KNSRegistrar is NameRegistrar, Ownable {
         return !registry.recordExists(node);
     }
 
-    function register(string calldata name, address owner) public onlyWhenLive onlyController returns (bytes32) {
+    function register(string calldata name, address _owner) public onlyWhenLive onlyController returns (bytes32) {
         if (!available(name)) {
             revert UnavailableName();
         }
 
         bytes32 hashedName = keccak256(abi.encodePacked(name));
-        registry.setSubnodeOwner(tldNode, hashedName, owner);
+        registry.setSubnodeOwner(tldNode, hashedName, _owner);
 
         if (address(namehashDB) != address(0)) {
             namehashDB.store(tldNode, name);
         }
 
-        emit NameRegistered(hashedName, owner);
+        emit NameRegistered(hashedName, _owner);
 
         return hashedName;
     }
