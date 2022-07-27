@@ -18,7 +18,8 @@ contract KNSRegistry is ERC721, NameRegistry, ERC721Enumerable, Pausable {
         uint64 ttl;
     }
 
-    mapping(bytes32 => Record) records;
+    mapping(bytes32 => Record) public records;
+    string public baseURI = "https://kuname.domains/metadata/kcc-mainnet/";
 
     // Permits modifications only by the owner of the specified node.
     modifier authorised(bytes32 node) {
@@ -31,7 +32,7 @@ contract KNSRegistry is ERC721, NameRegistry, ERC721Enumerable, Pausable {
     /**
      * @dev Constructs a new KNS registry.
      */
-    constructor() ERC721("KCC Name Service Domains", "KNSD") {
+    constructor() ERC721("KCC Name Service Domains v2", "KNSD") {
         _mint(_msgSender(), uint256(0x0));
     }
 
@@ -195,6 +196,14 @@ contract KNSRegistry is ERC721, NameRegistry, ERC721Enumerable, Pausable {
 
     function unpause() public authorised(0x0) {
         _unpause();
+    }
+
+    function _baseURI() internal view override returns (string memory) {
+        return baseURI;
+    }
+
+    function setBaseURI(string memory _uri) public authorised(0x0) {
+        baseURI = _uri;
     }
 
     // The following functions are overrides required by Solidity.
